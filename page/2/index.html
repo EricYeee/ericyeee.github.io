@@ -374,40 +374,6 @@ height:50vh;
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/05/flex/" >
-                
-                    <span>Flex布局</span>
-            </a>
-            <div class="abstract-content">
-                Flex布局Flex布局是什么？Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
-任何一个容器都可以指定为 Flex 布局。
-123.box&#123;  display: flex;&#125;
-行内元素也可以使用Flex布局。
-123.box&#123;  display: inline-flex;&#125;
-注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
-基本概念采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/05</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Flex">Flex</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
             <a class="abstract-title" href = "/2018/04/05/scrollTop/" >
                 
                     <span>scrollTop等元素距离</span>
@@ -436,6 +402,40 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
                 <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/04/05/flex/" >
+                
+                    <span>Flex布局</span>
+            </a>
+            <div class="abstract-content">
+                Flex布局Flex布局是什么？Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+任何一个容器都可以指定为 Flex 布局。
+123.box&#123;  display: flex;&#125;
+行内元素也可以使用Flex布局。
+123.box&#123;  display: inline-flex;&#125;
+注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
+基本概念采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/05</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Flex">Flex</a>
     
 </div>
                 
@@ -476,13 +476,21 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/01/数组去重的方法/" >
+            <a class="abstract-title" href = "/2018/04/01/深浅拷贝/" >
                 
-                    <span>数组去重</span>
+                    <span>深浅拷贝</span>
             </a>
             <div class="abstract-content">
-                数组去重1.检测新数组中是否已存在12345678910function unArray(arr)&#123;    let newArr = [];    for(let i=0;i&lt;arr.length;i++)    &#123;        if(newArr.indexOf(arr[i]) == -1)&#123;            newArr.push(arr[i]);        &#125;    &#125;    return newArr;&#125;
-2.检测原数组中是否有重复12345678910function unArray(arr)&#12...
+                深浅拷贝ECMAScript中的变量类型分为两种：
+
+基本类型： undefined、null、Boolean、String、Number。
+引用类型： 统称为Object类型，细分为：Object、Array、Date、Function等。
+
+不同类型变量的存储方式基本数据类型基本数据类型保存在栈内存，形式如下：栈内存中分别存储着变量的标识符以及变量的值。
+
+引用数据类型引用类型 保存在 堆内存 中， 栈内存存储的是变量的标识符以及对象在堆内存中的存储地址，当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从对应的堆内存中取得所需的数据。 
+
+什么是深浅...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -537,21 +545,13 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/01/深浅拷贝/" >
+            <a class="abstract-title" href = "/2018/04/01/数组去重的方法/" >
                 
-                    <span>深浅拷贝</span>
+                    <span>数组去重</span>
             </a>
             <div class="abstract-content">
-                深浅拷贝ECMAScript中的变量类型分为两种：
-
-基本类型： undefined、null、Boolean、String、Number。
-引用类型： 统称为Object类型，细分为：Object、Array、Date、Function等。
-
-不同类型变量的存储方式基本数据类型基本数据类型保存在栈内存，形式如下：栈内存中分别存储着变量的标识符以及变量的值。
-
-引用数据类型引用类型 保存在 堆内存 中， 栈内存存储的是变量的标识符以及对象在堆内存中的存储地址，当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从对应的堆内存中取得所需的数据。 
-
-什么是深浅...
+                数组去重1.检测新数组中是否已存在12345678910function unArray(arr)&#123;    let newArr = [];    for(let i=0;i&lt;arr.length;i++)    &#123;        if(newArr.indexOf(arr[i]) == -1)&#123;            newArr.push(arr[i]);        &#125;    &#125;    return newArr;&#125;
+2.检测原数组中是否有重复12345678910function unArray(arr)&#12...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -626,13 +626,15 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/21/cookie与WebStorage/" >
+            <a class="abstract-title" href = "/2018/03/21/清除浮动/" >
                 
-                    <span>cookie与WebStorage</span>
+                    <span>清除浮动</span>
             </a>
             <div class="abstract-content">
-                cookie、sessionStorage、localStorage 详解Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在，而Web Storage仅仅是为了在本地“存储”数据而生。
-cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的电脑里的资料（.txt格式的文本文件），好让服务器用来辨认你的计算机。当你在浏览网站的时候，Web服务器会先送一小小资料放在你的计算机上，Cookie 会把你在网站上所打的文字或是一些选择都记录下来。当下次你再访问同一个网站，Web服务器会先看看有没有它上次留下的Cookie资料，有的话，就会依据Cookie里的...
+                清除浮动浮动是什么？浮动元素会半脱离文档流并且向左/向右浮动，直到碰到父元素或者另一个浮动元素。
+利用clear清除浮动应用clear属性的元素不允许它的左边/右边挨着清除浮动。它的原理是：在被清除浮动的元素上边或者下边添加足够的清除空间。
+例如以下代码会造成高度坍塌：
+12345678910111213141516.box-wrapper &#123;  border: 5px solid red;&#125;.box-wrapper .box &#123;  float: left;   width: 100px;   height: 100px;   margin: 20px;  ...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -643,7 +645,7 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
     
 </div>
                 
@@ -1332,6 +1334,26 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-archive"> Total : 34 </div>
     
     <div class="post-archive">
@@ -1344,12 +1366,12 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
         </li>
     
     
@@ -1359,12 +1381,12 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2018/05/21/mongoose/" >Mongoose入门指南</a>
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2018/05/21/git/" >GIT使用手册</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2018/05/21/git/" >GIT使用手册</a>
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2018/05/21/mongoose/" >Mongoose入门指南</a>
         </li>
     
     
@@ -1399,22 +1421,17 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2018/04/02/Event Loop/" >Event Loop</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2018/04/02/Event Loop/" >Event Loop</a>
         </li>
     
     
@@ -1425,6 +1442,11 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
     
         <li class="archive-post-item">
             <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
         </li>
     
     
@@ -1469,12 +1491,12 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
         </li>
     
     
@@ -1526,13 +1548,13 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
-    
-        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
-    
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
     
         <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
@@ -1542,9 +1564,9 @@ cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的�
     
         <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
     
-        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
-    
         <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
+    
+        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
