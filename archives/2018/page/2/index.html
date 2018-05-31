@@ -332,55 +332,22 @@
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/new/" >
+            <a class="abstract-title" href = "/2018/04/08/Call/" >
                 
-                    <span>深入理解new操作符</span>
+                    <span>Call,aplly与bind</span>
             </a>
             <div class="abstract-content">
-                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
-1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
+                详解call、apply和bind在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到接花移木的效果。
+call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。
+
+不传，或者传null,undefined， 函数中的 this 指向 window 对象
+传递另一个函数的函数名，函数中的 this 指向这个函数的引用
+传递字符串、数值或布尔类型等基础类型，函数中...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
                 <div class="abstract-date">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/05/scrollTop/" >
-                
-                    <span>scrollTop等元素距离</span>
-            </a>
-            <div class="abstract-content">
-                scrollTop等元素距离
-window与document
-
-window1.window对象表示浏览器中打开的窗口。2.window对象可以省略，如:alert()  等价于  window.alert()
-
-
-
-
-document1.document对象是window对象的一部分。如：document.body   等价于  window.document.body2.浏览器的html文档成为document对象。
-
-
-window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗口的内部宽度）与window.out...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/05</span>
                 </div>
                 <!-- tags  -->
                 
@@ -430,6 +397,43 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/04/05/scrollTop/" >
+                
+                    <span>scrollTop等元素距离</span>
+            </a>
+            <div class="abstract-content">
+                scrollTop等元素距离
+window与document
+
+window1.window对象表示浏览器中打开的窗口。2.window对象可以省略，如:alert()  等价于  window.alert()
+
+
+
+
+document1.document对象是window对象的一部分。如：document.body   等价于  window.document.body2.浏览器的html文档成为document对象。
+
+
+window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗口的内部宽度）与window.out...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/05</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/04/02/Event Loop/" >
                 
                     <span>Event Loop</span>
@@ -446,6 +450,33 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
                 <!-- date  -->
                 <div class="abstract-date">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/04/01/数组去重的方法/" >
+                
+                    <span>数组去重</span>
+            </a>
+            <div class="abstract-content">
+                数组去重1.检测新数组中是否已存在12345678910function unArray(arr)&#123;    let newArr = [];    for(let i=0;i&lt;arr.length;i++)    &#123;        if(newArr.indexOf(arr[i]) == -1)&#123;            newArr.push(arr[i]);        &#125;    &#125;    return newArr;&#125;
+2.检测原数组中是否有重复12345678910function unArray(arr)&#12...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
                 </div>
                 <!-- tags  -->
                 
@@ -530,33 +561,6 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/01/数组去重的方法/" >
-                
-                    <span>数组去重</span>
-            </a>
-            <div class="abstract-content">
-                数组去重1.检测新数组中是否已存在12345678910function unArray(arr)&#123;    let newArr = [];    for(let i=0;i&lt;arr.length;i++)    &#123;        if(newArr.indexOf(arr[i]) == -1)&#123;            newArr.push(arr[i]);        &#125;    &#125;    return newArr;&#125;
-2.检测原数组中是否有重复12345678910function unArray(arr)&#12...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
             <a class="abstract-title" href = "/2018/03/25/多栏布局/" >
                 
                     <span>多栏布局</span>
@@ -611,15 +615,13 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/21/清除浮动/" >
+            <a class="abstract-title" href = "/2018/03/21/cookie与WebStorage/" >
                 
-                    <span>清除浮动</span>
+                    <span>cookie与WebStorage</span>
             </a>
             <div class="abstract-content">
-                清除浮动浮动是什么？浮动元素会半脱离文档流并且向左/向右浮动，直到碰到父元素或者另一个浮动元素。
-利用clear清除浮动应用clear属性的元素不允许它的左边/右边挨着清除浮动。它的原理是：在被清除浮动的元素上边或者下边添加足够的清除空间。
-例如以下代码会造成高度坍塌：
-12345678910111213141516.box-wrapper &#123;  border: 5px solid red;&#125;.box-wrapper .box &#123;  float: left;   width: 100px;   height: 100px;   margin: 20px;  ...
+                cookie、sessionStorage、localStorage 详解Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在，而Web Storage仅仅是为了在本地“存储”数据而生。
+cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的电脑里的资料（.txt格式的文本文件），好让服务器用来辨认你的计算机。当你在浏览网站的时候，Web服务器会先送一小小资料放在你的计算机上，Cookie 会把你在网站上所打的文字或是一些选择都记录下来。当下次你再访问同一个网站，Web服务器会先看看有没有它上次留下的Cookie资料，有的话，就会依据Cookie里的...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -630,7 +632,7 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
     
 </div>
                 
@@ -1220,30 +1222,6 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-archive"> Total : 34 </div>
     
     <div class="post-archive">
@@ -1256,12 +1234,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
         </li>
     
     
@@ -1286,12 +1264,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/ESLint-EditorConfig/" >ESLint与EditorConfig</a>
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/config-lite/" >config-lite</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/config-lite/" >config-lite</a>
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/ESLint-EditorConfig/" >ESLint与EditorConfig</a>
         </li>
     
     
@@ -1301,17 +1279,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
         </li>
     
     
@@ -1321,12 +1294,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2018/04/02/Event Loop/" >Event Loop</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2018/04/02/Event Loop/" >Event Loop</a>
         </li>
     
     
@@ -1337,6 +1310,11 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
         <li class="archive-post-item">
             <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
         </li>
     
     
@@ -1381,12 +1359,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
         </li>
     
     
@@ -1438,35 +1416,35 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
-        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
-    
-        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
+        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
         <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
     
-        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
-    
         <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
-    
-        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
         <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
+        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
+    
         <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
         <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
-    
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
         <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
     
