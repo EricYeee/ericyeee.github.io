@@ -347,6 +347,65 @@ height:50vh;
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/06/18/UDKjs(2)/" >
+                
+                    <span>你不知道的JavaScript读书笔记(2)</span>
+            </a>
+            <div class="abstract-content">
+                你不知道的JavaScript读书笔记(2)提升编译器在提升中起到了很重要的作用。因为编译阶段的一部分工作就是找到所有的声明，并且用合适的作用域将它们关联起来。例如：
+123//输出undefinedconsole.log(a);var a = 2;
+以上代码是可以运行的，它实际产生的效果如下：
+12345//这一句声明在编译阶段就已经完成！var a;//以下代码在执行阶段才会完成console.log(a);a = 2;
+函数声明和变量声明都会被提升，但是需要注意的是：函数会被首先提升，然后才是变量。例如：
+12345678//输出1foo();var foo = function(...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/18</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/06/17/UDKjs(1)/" >
+                
+                    <span>你不知道的JavaScript读书笔记(1)</span>
+            </a>
+            <div class="abstract-content">
+                你不知道的JavaScript读书笔记(1)作用域是什么编译原理大家通常把JavaScript 归类为“动态”或者是“解释执行”语言，但是事实上它是一门编译语言。但是它不是提前编译的，而是在每块代码执行前当场编译的。
+首先进行词法分析将代码字符串分解为有意义的代码块，称为词法单元 ；然后进行语法分析将词法单元流转换为代表程序语法的树，称为抽象语法树AST(Abstract Syntax Tree) ；然后再进行代码生成，即把AST转换为一组机器指令。
+引擎中的查找每当遇到一个变量，引擎都会进行LHS或者RHS 。其中当变量出现在赋值操作的左侧时（即获取变量的容器），进行LHS查询；而当变...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/17</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/05/30/rem/" >
                 
                     <span>利用rem进行适配</span>
@@ -595,69 +654,6 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
                 <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "ESLint">ESLint</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/12/MongoDB/" >
-                
-                    <span>MongoDB基础</span>
-            </a>
-            <div class="abstract-content">
-                MongoDB基础简介丰富的数据模型MongoDB是面向文档的数据库，不是关系型数据库。放弃关系模型的主要原因就是为了获得更加方便的扩展性。面向文档的方式可以将文档或者数组内嵌进来，所以用一条记录就可以表示非常复杂的层次关系。
-容易扩展丰富的功能
-索引：MongoDB支持通用辅助索引，能进行多种快速查询；
-存储JavaScript ：开发人员不必使用存储过程了，可以直接在服务端存取JavaScript 的函数和值；
-聚合
-固定集合：集合的大小是有上限的；
-文件存储：MongoDB支持用一种容易使用的协议存储大型文件和文件的元数据；
-
-不牺牲速度便捷的管理MongoDB尽量让服务器自治来简...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/12</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NodeJS">NodeJS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "MongoDB">MongoDB</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/new/" >
-                
-                    <span>深入理解new操作符</span>
-            </a>
-            <div class="abstract-content">
-                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
-1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
     
 </div>
                 
@@ -1342,7 +1338,75 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
     
     
-    <div class="total-archive"> Total : 34 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 38 </div>
     
     <div class="post-archive">
     
@@ -1351,6 +1415,16 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/18</span><a class="archive-post-title" href= "/2018/06/18/UDKjs(2)/" >你不知道的JavaScript读书笔记(2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/UDKjs(1)/" >你不知道的JavaScript读书笔记(1)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1384,12 +1458,12 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/config-lite/" >config-lite</a>
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/ESLint-EditorConfig/" >ESLint与EditorConfig</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/ESLint-EditorConfig/" >ESLint与EditorConfig</a>
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/config-lite/" >config-lite</a>
         </li>
     
     
@@ -1409,12 +1483,12 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
         </li>
     
     
@@ -1424,7 +1498,7 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
         </li>
     
     
@@ -1434,7 +1508,7 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
@@ -1449,12 +1523,12 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
         </li>
     
     
@@ -1475,6 +1549,11 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/typesOfJs/" >JS中的数据类型与操作符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/src与href/" >src与href的区别</a>
         </li>
     
     
@@ -1518,6 +1597,11 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
         </li>
     
     
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2018/01/12/css中的层叠./" >CSS中的层叠</a>
+        </li>
+    
+    
     
     
     
@@ -1536,17 +1620,15 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
         <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
     
-        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
-    
-        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
-    
-        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
     
@@ -1556,19 +1638,21 @@ config-lite 是一个轻量的读取配置文件的模块。config-lite 会根�
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
-        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
-    
-        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
-    
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
         <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+    
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
     
         <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
     
-        <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
+        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
         <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
     

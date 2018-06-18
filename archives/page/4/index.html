@@ -332,6 +332,109 @@
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/02/06/RESTful/" >
+                
+                    <span>RESTful学习笔记</span>
+            </a>
+            <div class="abstract-content">
+                RESTful学习笔记RESTful是什么？它的本质是一种软件架构风格，核心是面向资源（面向资源去设计API），它解决的问题有：①降低开发的复杂性②提高系统的可伸缩性。
+设计概念和准则
+网络上所有事物都可以被抽象为资源
+每个资源都有唯一的资源标识，对资源的操作不会改变这些标识（例如对某一资源进行删除操作，删除完成后，它的资源标识还是有效的，只不过这个资源标识代表的资源不存在了）
+所有的操作都是无状态的（前一次操作和后一次操作没有关联）
+
+HTTP协议URLHTTP是属于应用层的协议，特点是简洁、快速。
+schema://host[:port]/path[?query-string][#a...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/06</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "RESTful">RESTful</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/02/05/CodeIgniter/" >
+                
+                    <span>CodeIgniter学习笔记</span>
+            </a>
+            <div class="abstract-content">
+                CodeIgniter学习笔记概览应用程序流程图
+
+index.php 文件作为前端控制器，初始化运行 CodeIgniter 所需的基本资源；
+Router 检查 HTTP 请求，以确定如何处理该请求；
+如果存在缓存文件，将直接输出到浏览器，不用走下面正常的系统流程；
+在加载应用程序控制器之前，对 HTTP 请求以及任何用户提交的数据进行安全检查；
+控制器加载模型、核心类库、辅助函数以及其他所有处理请求所需的资源；
+最后一步，渲染视图并发送至浏览器，如果开启了缓存，视图被会先缓存起来用于 后续的请求。
+
+模型-视图-控制器CodeIgniter 的开发基于 MVC（模型-视图-控制器）...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/05</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CodeIgniter">CodeIgniter</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PHP">PHP</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/02/02/less/" >
+                
+                    <span>less学习笔记</span>
+            </a>
+            <div class="abstract-content">
+                less学习笔记导入可以通过下面的形势引入 .less 文件, .less 后缀可带可不带:
+12@import "lib.less";@import "lib";
+如果导入一个CSS文件而且不想LESS对它进行处理，只需要使用.css后缀就行：
+1@import "lib.css";
+变量less的变量和sass的变量类似（使用@而不是$），但是相比之下缺少默认变量（!default）、特殊变量（将变量值作为属性值）和多值变量 ：
+1234@nice-blue: #5B83AD;@light-blue: @nice-blue + #111;#header &#123; color: @...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Less">Less</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/01/20/sass/" >
                 
                     <span>SASS学习笔记</span>
@@ -353,6 +456,34 @@
         <a class="post-tag" href="javascript:void(0);" data-tags = "Sass">Sass</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Scss">Scss</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/01/19/keep-alive/" >
+                
+                    <span>vue2.0中keep-alive实践</span>
+            </a>
+            <div class="abstract-content">
+                vue2.0中keep-alive实践vue2.0提供了一个keep-alive组件，用来缓存组件,避免多次加载相应的组件,减少性能消耗。
+1.缓存所有页面1234//在router的根页面下&lt;keep-alive&gt;  &lt;router-view&gt;&lt;/router-view&gt;&lt;/keep-alive&gt;
+2.缓存某些页面1234&lt;keep-alive&gt;    &lt;router-view v-if="$route.meta.keepAlive"&gt;&lt;/router-view&gt;&lt;/keep-alive&gt;&...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/19</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Vue">Vue</a>
     
 </div>
                 
@@ -393,25 +524,50 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/01/19/keep-alive/" >
+            <a class="abstract-title" href = "/2018/01/12/css中的层叠./" >
                 
-                    <span>vue2.0中keep-alive实践</span>
+                    <span>CSS中的层叠</span>
             </a>
             <div class="abstract-content">
-                vue2.0中keep-alive实践vue2.0提供了一个keep-alive组件，用来缓存组件,避免多次加载相应的组件,减少性能消耗。
-1.缓存所有页面1234//在router的根页面下&lt;keep-alive&gt;  &lt;router-view&gt;&lt;/router-view&gt;&lt;/keep-alive&gt;
-2.缓存某些页面1234&lt;keep-alive&gt;    &lt;router-view v-if="$route.meta.keepAlive"&gt;&lt;/router-view&gt;&lt;/keep-alive&gt;&...
+                CSS中的层叠css的中文全称为层叠样式表，这暗示了层叠的重要性。
+我们常常遇到，两个选择器同时选中同一个元素，并且它们提供的样式造成了冲突的情况。那么此时，应该应用哪个样式呢？
+我们可以使用专用性来衡量。
+专用性专用性的评判标准如下：
+
+如果该声明是在style属性中（即内联样式），那么此声明增加1000分；
+若选择器中每包含一个id选择器，则此声明增加100分；
+如果选择器每包含一个类选择器、属性选择器或者伪类，就给该声明增加10分；
+若选择器中每包含一个元素选择器或伪元素，那么此声明就增加1分；
+
+以下为示例：
+
+
+
+选择器
+千位
+百位
+十位
+个位
+合计值
+
+
+
+
+h1
+0
+0
+0...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/19</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/12</span>
                 </div>
                 <!-- tags  -->
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Vue">Vue</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
     
 </div>
                 
@@ -1029,7 +1185,75 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     
     
-    <div class="total-archive"> Total : 34 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 38 </div>
     
     <div class="post-archive">
     
@@ -1038,6 +1262,16 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/18</span><a class="archive-post-title" href= "/2018/06/18/UDKjs(2)/" >你不知道的JavaScript读书笔记(2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/UDKjs(1)/" >你不知道的JavaScript读书笔记(1)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1071,12 +1305,12 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/config-lite/" >config-lite</a>
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/ESLint-EditorConfig/" >ESLint与EditorConfig</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/ESLint-EditorConfig/" >ESLint与EditorConfig</a>
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/config-lite/" >config-lite</a>
         </li>
     
     
@@ -1096,12 +1330,12 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
         </li>
     
     
@@ -1111,7 +1345,7 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
         </li>
     
     
@@ -1121,7 +1355,7 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
@@ -1136,12 +1370,12 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
         </li>
     
     
@@ -1162,6 +1396,11 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/typesOfJs/" >JS中的数据类型与操作符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/src与href/" >src与href的区别</a>
         </li>
     
     
@@ -1205,6 +1444,11 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
         </li>
     
     
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2018/01/12/css中的层叠./" >CSS中的层叠</a>
+        </li>
+    
+    
     
     
     
@@ -1223,17 +1467,15 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
         <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
     
-        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
-    
-        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
-    
-        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
     
@@ -1243,19 +1485,21 @@ SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：emb
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
-        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
-    
-        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
-    
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
         <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+    
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
     
         <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
     
-        <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
+        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
         <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
     
