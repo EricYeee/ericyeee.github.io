@@ -332,6 +332,40 @@
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/06/24/UDKjs(3)/" >
+                
+                    <span>你不知道的JavaScript读书笔记(3)</span>
+            </a>
+            <div class="abstract-content">
+                你不知道的JavaScript读书笔记(3)this全面解析不同于词法作用域在声明时就已经确定，this是在运行时进行绑定的。this的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式。
+绑定规则想要得出this所绑定的对象，我们需要两步：
+
+找到函数的调用位置；
+判断应用以下四条规则中的哪一条；
+
+默认绑定12345function foo() &#123;    console.log(this.a);&#125;var a = 2;foo(); //2
+上例调用时就应用了this的默认绑定 ，因此this指向全局变量。那么我们如何得知此处应用了默认绑定呢？
+我们首先观察函数...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/24</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/06/19/柯里化/" >
                 
                     <span>浅谈柯里化</span>
@@ -419,17 +453,13 @@
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/Call/" >
+            <a class="abstract-title" href = "/2018/04/08/new/" >
                 
-                    <span>Call,aplly与bind</span>
+                    <span>深入理解new操作符</span>
             </a>
             <div class="abstract-content">
-                详解call、apply和bind在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到接花移木的效果。
-call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。
-
-不传，或者传null,undefined， 函数中的 this 指向 window 对象
-传递另一个函数的函数名，函数中的 this 指向这个函数的引用
-传递字符串、数值或布尔类型等基础类型，函数中...
+                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
+1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -450,13 +480,17 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/new/" >
+            <a class="abstract-title" href = "/2018/04/08/Call/" >
                 
-                    <span>深入理解new操作符</span>
+                    <span>Call,aplly与bind</span>
             </a>
             <div class="abstract-content">
-                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
-1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
+                详解call、apply和bind在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到接花移木的效果。
+call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。
+
+不传，或者传null,undefined， 函数中的 this 指向 window 对象
+传递另一个函数的函数名，函数中的 this 指向这个函数的引用
+传递字符串、数值或布尔类型等基础类型，函数中...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -592,34 +626,6 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
                 <!-- date  -->
                 <div class="abstract-date">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/24/隐藏元素的方法/" >
-                
-                    <span>隐藏页面元素的方法</span>
-            </a>
-            <div class="abstract-content">
-                隐藏页面元素的方法opacityopacity 属性的意思是设置一个元素的透明度。它不是为改变元素的边界框（bounding box）而设计的。这意味着将 opacity 设为 0 只能从视觉上隐藏元素。而元素本身依然占据它自己的位置并对网页的布局起作用。它也将响应用户交互。
-123.hide &#123;  opacity: 0;&#125;
-position假设有一个元素你想要与它交互，但是你又不想让它影响你的网页布局，没有合适的属性可以处理这种情况（opacity 和 visibility 影响布局， display 不影响布局但又无法直接交互）。在这种情况下，你只能考虑将元素移出...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/24</span>
                 </div>
                 <!-- tags  -->
                 
@@ -1316,7 +1322,38 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
     
-    <div class="total-archive"> Total : 39 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 40 </div>
     
     <div class="post-archive">
     
@@ -1325,6 +1362,11 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2018/06/24/UDKjs(3)/" >你不知道的JavaScript读书笔记(3)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1343,12 +1385,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
         </li>
     
     
@@ -1388,17 +1430,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
         </li>
     
     
@@ -1408,17 +1445,22 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2018/04/02/Event Loop/" >Event Loop</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
         </li>
     
     
@@ -1438,12 +1480,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
         </li>
     
     
@@ -1503,12 +1545,12 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
         </li>
     
     
@@ -1539,13 +1581,11 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
-    
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
-        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
     
@@ -1553,29 +1593,31 @@ position假设有一个元素你想要与它交互，但是你又不想让它影
     
         <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
-        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
-    
         <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
-    
-        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
+    
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
     
-        <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
+        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
         <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
     
         <span class="sidebar-tag-name" data-tags="Sass"><span class="iconfont-archer">&#xe606;</span>Sass</span>
     
         <span class="sidebar-tag-name" data-tags="Scss"><span class="iconfont-archer">&#xe606;</span>Scss</span>
     
-        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
-    
         <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
     
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+        <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

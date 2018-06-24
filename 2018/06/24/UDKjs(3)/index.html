@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html>
+    <!-- title -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Eric">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Eric">
+    <meta name="keywords" content="Eric's Blog | Eric">
+    <meta name="description" content="">
+    <meta name="Cache-Control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>你不知道的JavaScript读书笔记(3) · EricYeee&#39;s documents</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s 1;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= /css/style.css?v=20180524 as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= /css/mobile.css?v=20180524 media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >EricYeee&#39;s documents</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">你不知道的JavaScript读书笔记(3)</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>EricYeee's documents</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style=
+
+
+
+
+
+
+
+
+height:50vh;
+
+>
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            你不知道的JavaScript读书笔记(3)
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count">4,366</span> / Reading time: <span class="post-count">18 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/06/24</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+  
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="你不知道的JavaScript读书笔记-3"><a href="#你不知道的JavaScript读书笔记-3" class="headerlink" title="你不知道的JavaScript读书笔记(3)"></a>你不知道的JavaScript读书笔记(3)</h1><h2 id="this全面解析"><a href="#this全面解析" class="headerlink" title="this全面解析"></a>this全面解析</h2><p>不同于词法作用域在声明时就已经确定，<code>this</code>是在运行时进行绑定的。<strong><code>this</code>的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式</strong>。</p>
+<h3 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h3><p>想要得出<code>this</code>所绑定的对象，我们需要两步：</p>
+<ol>
+<li>找到函数的调用位置；</li>
+<li>判断应用以下四条规则中的哪一条；</li>
+</ol>
+<h4 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">foo(); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>上例调用时就应用了<code>this</code>的<strong>默认绑定 ，因此<code>this</code>指向全局变量</strong>。那么我们如何得知此处应用了默认绑定呢？</p>
+<p>我们首先观察函数的调用位置，可以发现<code>foo()</code>是直接使用不带任何修饰符的函数引用进行调用的，因此只能使用默认绑定，无法应用其他规则。</p>
+<p>但是，需要<strong>注意</strong>的是如果<code>foo()</code>运行在严格模式下（若是在严格模式下<strong>被调用</strong>则不受限制），那么就不能将全局变量用于默认绑定，因此<code>this</code>会绑定带<code>undefined</code>。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">	"use strict"</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">foo(); <span class="comment">//TypeError: this is undefined</span></span><br></pre></td></tr></table></figure>
+<h4 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h4><p>另一条需要考虑的规则是<strong>调用位置是否有上下文对象，或者说是否被某个对象拥有或者包含</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span>,</span><br><span class="line">    foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo(); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>当函数引用有上下文对象时，隐式绑定规则会把函数调用中的<code>this</code>绑定到这个上下文对象。</p>
+<p><strong>注意</strong>：对象属性<strong>引用链</strong> 中只有上一层或者说最后一层在调用位置中起作用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="keyword">this</span>.a );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    a: <span class="number">42</span>,</span><br><span class="line">    foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    a: <span class="number">2</span>,</span><br><span class="line">    obj2: obj2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.obj2.foo(); <span class="comment">//42</span></span><br></pre></td></tr></table></figure>
+<p>一个最常见的问题就是<strong>隐式丢失</strong> ，即隐式绑定的函数会丢失绑定对象，也就是说它会应用默认绑定，从而把<code>this</code>绑定到全局对象或者<code>undefined</code>上。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span>,</span><br><span class="line">    foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = obj.foo;</span><br><span class="line"><span class="keyword">var</span> a = <span class="string">"oops, global"</span>;</span><br><span class="line">bar(); <span class="comment">//"oops, global"</span></span><br></pre></td></tr></table></figure>
+<p>虽然<code>bar</code>是<code>obj.foo</code>的一个引用，但是实际上它引用的是<code>foo</code>函数本身，因此<strong>此时的<code>bar()</code>实际上是一个不带任何修饰的函数调用</strong>，因此应用了默认绑定。</p>
+<p>一种更微妙，更常见并且更出乎意料的情况发生在传入回调函数时：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doFoo</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    fn(); <span class="comment">//此处为调用位置</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span>,</span><br><span class="line">    foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> a = <span class="string">"oops, global"</span>;</span><br><span class="line">doFoo(obj.foo); <span class="comment">//"oops, global"</span></span><br></pre></td></tr></table></figure>
+<p>以上代码中向<code>doFoo</code>传入的参数虽然是<code>obj.foo</code>，但是实际上<code>fn</code>引用的是<code>foo</code>，所以结果就导致了应用默认绑定的规则。</p>
+<h4 id="显式绑定"><a href="#显式绑定" class="headerlink" title="显式绑定"></a>显式绑定</h4><p>我们可以通过<code>call()</code>方法或者<code>apply()</code>方法来进行显式绑定，关于它们的用法可以参照我的另外一篇博客<a href="https://ericyeee.github.io/2018/04/08/Call/" target="_blank" rel="noopener">Call,aplly与bind</a>。</p>
+<p><strong>注意</strong>：若你对这两种函数传入了一个原始值（字符串类型、布尔值类型或者数字类型）来当做<code>this</code>的绑定对象，<strong>这个原始值会被转换为它的对象形式</strong>。</p>
+<p>可是，显式绑定仍然没有办法解决我们之前提出的问题绑定丢失的问题。要解决这个问题，可以使用显式绑定的一个变种——<strong>硬绑定</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo.call(obj);</span><br><span class="line">&#125;</span><br><span class="line">bar();</span><br><span class="line">setTimeout(bar, <span class="number">100</span>); <span class="comment">//2</span></span><br><span class="line"><span class="comment">//硬绑定的bar不可能再修改它的this</span></span><br><span class="line">bar.call(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<p>在以上代码中，我们创建了<code>bar()</code>，并且在它的内部手动调用<code>foo.call(obj)</code>，因此强制把<code>foo</code>的<code>this</code>绑定到了<code>obj</code>然后调用。</p>
+<p>硬绑定的典型应用场景是创建一个可以重复使用的辅助函数（<strong>简易模拟<code>bind</code>函数</strong>）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a, something);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a + something;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">fn, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fn.apply(obj, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = bind(foo, obj);</span><br><span class="line"><span class="keyword">var</span> b = bar(<span class="number">3</span>);<span class="comment">//2 3</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+<p>由于硬绑定非常常用，所以ES5提供了内置方法<code>Function.prototype.bind</code>。</p>
+<h4 id="new绑定"><a href="#new绑定" class="headerlink" title="new绑定"></a>new绑定</h4><p>要了解<code>new</code>绑定，我们首先要知道，<strong>每当你使用<code>new</code>构造一个对象时，发生了什么</strong>：</p>
+<ol>
+<li>创建一个全新的对象；</li>
+<li>这个新对象会被执行<code>[[Prototype]]</code> 连接；</li>
+<li>这个新对象会绑定到函数调用的<code>this</code> ；</li>
+<li>如果函数没有返回其他对象，那么<code>new</code>表达式中的函数调用会自动返回这个新对象。</li>
+</ol>
+<p>以下为<code>new</code>绑定的一个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> foo(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(bar.a); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p>如果某个调用位置可以应用多条规则的话，它们应该靠优先级来决定<code>this</code>指向。</p>
+<p>首先，<strong>默认绑定</strong>的优先级是四条规则中最低的。接着我们可以从以下代码来判断隐式绑定和显式绑定的优先级：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    a: <span class="number">2</span>,</span><br><span class="line">    foo: foo</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    a: <span class="number">3</span>,</span><br><span class="line">    foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj1.foo(); <span class="comment">//2</span></span><br><span class="line">obj2.foo(); <span class="comment">//3</span></span><br><span class="line">obj1.foo.call(obj2); <span class="comment">//3</span></span><br><span class="line">obj2.foo.call(obj1); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>由此可得，<strong>显式绑定的优先级高于隐式绑定</strong>。</p>
+<p>那么<code>new</code>绑定和隐式绑定谁的优先级更高呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = something;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;&#125;;</span><br><span class="line">obj1.foo(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.a);</span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> obj1.foo(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.a); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(bar.a); <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<p>由以上代码可知：<strong><code>new</code>绑定的优先级高于隐式绑定</strong>。</p>
+<p>那么最后，<code>new</code>绑定和显式绑定谁的优先级高呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = something;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = foo.bind(obj1);</span><br><span class="line">bar(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.a); <span class="comment">//2</span></span><br><span class="line"><span class="keyword">var</span> baz = <span class="keyword">new</span> bar(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.a); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(baz.a); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<p>所以可以得出<strong><code>new</code>绑定的优先级高于显式绑定</strong>。正如以上代码所得出的结论，在ES5中对于<code>bind</code>函数的实现中有一个细节是的这样：<strong>代码会判断硬绑定函数是否被<code>new</code>调用，如果是的话就会使用新创建的<code>this</code>替换硬绑定的<code>this</code></strong>。之所以要在new中使用硬绑定的主要目的是预先设置函数的一些参数，这是柯里化的一种应用。有关柯里化，可以参考我之前的一篇博客：<a href="https://ericyeee.github.io/2018/06/19/%E6%9F%AF%E9%87%8C%E5%8C%96/" target="_blank" rel="noopener">浅谈柯里化</a>。</p>
+<p>综上所述，这四种绑定规则的优先级是：</p>
+<p><strong>new绑定 &gt; 显式绑定 &gt; 隐式绑定 &gt; 默认绑定</strong></p>
+<h3 id="被忽略的this"><a href="#被忽略的this" class="headerlink" title="被忽略的this"></a>被忽略的this</h3><p>如果你把<code>null</code>或者<code>undefined</code>作为<code>this</code>的绑定对象传入<code>call</code>、<code>apply</code>或者<code>bind</code>中会怎么样呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">foo.call(<span class="literal">null</span>); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>事实证明，<strong>这些值在调用时会被忽略，实际应用的是默认绑定规则</strong>。</p>
+<h3 id="箭头函数中的this"><a href="#箭头函数中的this" class="headerlink" title="箭头函数中的this"></a>箭头函数中的this</h3><p>箭头函数不使用<code>this</code>的四中标准规则，而是<strong>根据外层（函数或全局作用域）来决定<code>this</code></strong>。我们来看一下以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    a: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = foo.call(obj1);</span><br><span class="line">bar.call(obj2); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>以我个人的观点：<strong>箭头函数中的<code>this</code> 指向不是在调用时决定，而是在创建时就决定了</strong>（不知道是否正确…）。</p>
+<p>让我们来分析一下上例都发生了什么：</p>
+<ol>
+<li>首先声明了<code>foo</code>函数，然后该函数中的箭头函数的<code>this</code>指向了<strong>它的外层</strong> ，也就是<code>foo</code>函数；</li>
+<li>接着调用<code>var bar = foo.call(obj1)</code> 来将<code>foo</code>函数的<code>this</code>指向<code>obj1</code> 对象；</li>
+<li>最后以<code>bar.call(obj2)</code> 来调用该箭头函数，意在将箭头函数的this绑定到obj2上，但是在创建时箭头函数的<code>this</code>已经指向了<code>foo</code>函数（并且<code>foo</code>函数中的<code>this</code>指向已经被修改为<code>obj1</code>了），所以再调用<code>call</code>函数时并不会修改结果，最后输出<code>2</code>。</li>
+</ol>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p>在<code>JavaScript</code>中一共有六种主要类型：</p>
+<ul>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>object</li>
+</ul>
+<p>其中object为<strong>复杂基本类型</strong>，而其余的类型都为<strong>简单基本类型</strong> 。而除了<code>null</code>和<code>undefined</code>之外，剩下三种简单基本类型都有对应的<strong>内置对象</strong> 。以下为内置对象的列表（注意都为大写字母开头）：</p>
+<ul>
+<li>String</li>
+<li>Number</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Function</li>
+<li>Array</li>
+<li>Date</li>
+<li>RegExp</li>
+<li>Error</li>
+</ul>
+<p>这些内置对象从表现形式中很像其他语言中的类型(type)或者类(class)。<strong>但是在<code>JavaScript</code>中，它们实际上只是一些内置函数</strong>。而这些函数可以当做构造函数来使用，从而可以构造一个对应子类型的新对象。</p>
+<p>但是在我们平常预见到额代码中，会出现以下情况：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"i am a string"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.length); <span class="comment">//13</span></span><br><span class="line"><span class="built_in">console</span>.log(str.charAt(<span class="number">3</span>)) <span class="comment">//"m"</span></span><br></pre></td></tr></table></figure>
+<p>此处的<code>str</code>明明只是一个简单基本类型<code>string</code>，为什么能够调用它的属性(<code>length</code>)和方法(<code>charAt</code>)呢？</p>
+<p>事实上，<strong>在必要时语言会自动把字符串(或者数字)字面量转换成一个<code>String</code>对象(或者<code>Number</code>对象)，并且在完成不要的操作后立即销毁</strong>。也就是说很多时候你并不需要显式地创建一个对象。</p>
+<h3 id="可计算属性名"><a href="#可计算属性名" class="headerlink" title="可计算属性名"></a>可计算属性名</h3><p>在<strong>对象</strong>中，属性名永远都是字符串。如果你使用<code>string</code>以外的其他值作为属性名，那么<strong>它首先会被转换为一个字符串</strong>。所以可以在数组中使用数组下标，但是在对象中最好不要这么做：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">myObject[<span class="literal">true</span>] = <span class="string">"foo"</span>;</span><br><span class="line">myObject[<span class="number">3</span>] = <span class="string">"bar"</span>;</span><br><span class="line">myObject[myObject] = <span class="string">"baz"</span>;</span><br><span class="line"></span><br><span class="line">myObject[<span class="string">"true"</span>]; <span class="comment">//"foo"</span></span><br><span class="line">myObject[<span class="string">"3"</span>]; <span class="comment">//"bar"</span></span><br><span class="line">myObject[<span class="string">"[object Object]"</span>]; <span class="comment">//"baz"</span></span><br></pre></td></tr></table></figure>
+<p>同时需要<strong>注意</strong>的是：在ES6中增加了可计算属性名，可以在文字形式中使用<code>[]</code>包裹一个表达式来当做属性名：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prefix = <span class="string">"foo"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    [prefix + <span class="string">"bar"</span>]: <span class="string">"hello"</span>,</span><br><span class="line">    [prefix + <span class="string">"baz"</span>]: <span class="string">"world"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myObject[<span class="string">"foobar"</span>];<span class="comment">//"hello"</span></span><br><span class="line">myObject[<span class="string">"foobaz"</span>];<span class="comment">//"world"</span></span><br></pre></td></tr></table></figure>
+<p>可计算属性名最常用的场景可能就是ES6中的<code>Symbol</code> ，它是一种新的基础数据类型，此处不做过多的说明。</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组具有下标，并且访问数组时，数组期望的是数值下标：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="string">"foo"</span>, <span class="number">42</span>, <span class="string">"bar"</span>];</span><br><span class="line">myArray.length;<span class="comment">//3</span></span><br><span class="line">myArray[<span class="number">0</span>];<span class="comment">//"foo"</span></span><br><span class="line">myArray[<span class="number">2</span>];<span class="comment">//"bar"</span></span><br></pre></td></tr></table></figure>
+<p>但是需要<strong>注意</strong>的是，<strong>数组也是对象，所以虽然每个下标都是整数，你仍然可以给数组添加属性</strong> ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="string">"foo"</span>, <span class="number">42</span>, <span class="string">"bar"</span>];</span><br><span class="line">myArray.baz = <span class="string">"baz"</span>;</span><br><span class="line">myArray.length;<span class="comment">//3</span></span><br><span class="line">myArray.baz;<span class="comment">//"baz"</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，<strong>虽然添加了命名属性（无论是通过<code>.</code>语法还是<code>[]</code>语法），数组的<code>length</code>值都没有发生变化</strong>。但是需要<strong>注意</strong>的是：<strong>如果你试图向数组添加一个属性，但是属性名“看起来”像是一个数字，那么他会变成一个数组下标</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="string">"foo"</span>, <span class="number">42</span>, <span class="string">"bar"</span>];</span><br><span class="line">myArray[<span class="string">"3"</span>] = <span class="string">"baz"</span>;</span><br><span class="line">myArray.length;<span class="comment">//4</span></span><br><span class="line">myArray[<span class="number">3</span>];<span class="comment">//"baz"</span></span><br></pre></td></tr></table></figure>
+<h3 id="复制对象"><a href="#复制对象" class="headerlink" title="复制对象"></a>复制对象</h3><p>在<code>JavaScript</code> 中应该如何复制一个对象呢？</p>
+<p>首先，我们需要决定是要进行<strong>浅复制</strong>还是进行<strong>深复制</strong> 。这两者的区别是浅复制对于目标对象中嵌套的对象，实际上进行的是<strong>复制该嵌套对象的引用</strong> ，而深复制将会<strong>重新创建</strong>一个与之相等的对象。（需要注意深复制中的<strong>循环引用</strong>问题）</p>
+<p>ES6中定义了一个<code>Object.assign()</code> 方法，用于进行<strong>浅复制</strong> 。该方法的第一个参数是目标对象，之后可以跟一个或者多个源对象。它会遍历它们的所有可枚举的自有键，并把它们复制到目标对象（<strong>使用<code>=</code>赋值</strong>），最后返回目标对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newObj = <span class="built_in">Object</span>.assign(&#123;&#125;, myObject, yourObject);</span><br></pre></td></tr></table></figure>
+<p>需要<strong>注意</strong>的是：<strong>由于<code>Object.assign()</code>是使用<code>=</code>操作符来赋值，所以源对象属性的一些特性（比如<code>writable</code>）就不会被复制到目标对象</strong>。</p>
+<h3 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h3><p>从ES5开始，<strong>所有的属性都具备了属性描述符</strong>。</p>
+<p>我们可以使用<code>Object.defineProperty()</code> 来添加一个属性，或者是修改一个已有属性（前提是它的<code>configurable</code>属性描述符的值为<code>true</code> ）并对特性进行设置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty( myObject, <span class="string">"a"</span>, &#123;</span><br><span class="line">    <span class="comment">//为该属性赋值</span></span><br><span class="line">    value: <span class="number">2</span>,</span><br><span class="line">    <span class="comment">//可写入</span></span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">//可配置</span></span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">//可枚举</span></span><br><span class="line">    enumerable: <span class="literal">true</span></span><br><span class="line">&#125; );</span><br><span class="line"></span><br><span class="line">myObject.a; <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li>你可以把<code>writable:false</code> 看做是属性不可改变，相当于你定义了一个空操作<code>setter</code> ；</li>
+<li>而若<code>configurable:false</code>则表示不可配置属性标识符。<strong>注意</strong>：将<code>configurable</code>设置为<code>false</code>是单向操作，不可修改。（而且将不允许删除这个属性）</li>
+</ul>
+<h3 id="不变性"><a href="#不变性" class="headerlink" title="不变性"></a>不变性</h3><p>有时候你会希望属性或者对象是<strong>不可改变</strong>的，在ES5中可以通过很多种方法来实现。但是需要<strong>注意</strong>的是：所有的方法创建的都是<strong>浅不变形</strong> ，也就是说它们只会影响目标对象和它的直接属性。如果目标对象引用了其他对象（数组、对象、函数等），其他对象的内容不受影响，仍然是可以改变的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myImmutableObject.foo; <span class="comment">//[1, 2, 3];</span></span><br><span class="line">myImmutableObject.foo.push(<span class="number">4</span>);</span><br><span class="line">myImmutableObject.foo; <span class="comment">//[1, 2, 3, 4];</span></span><br></pre></td></tr></table></figure>
+<p>如果为了保护<code>foo</code>，需要使用其他方法让<code>foo</code>也不可变。</p>
+<h4 id="对象常量"><a href="#对象常量" class="headerlink" title="对象常量"></a>对象常量</h4><p>结合<code>writable:false</code>和<code>configurable:false</code>就可以创建一个真正地常量属性（不可修改、重定义或者删除）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(myObject, <span class="string">"FAVORITE_NUMBER"</span>, &#123;</span><br><span class="line">    value: <span class="number">42</span>,</span><br><span class="line">    writable: <span class="literal">false</span>,</span><br><span class="line">    configurable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h4><p>如果你想<strong>禁止一个对象添加新属性并且保留已有属性</strong>，可以使用<code>Object.preventExtensions()</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.preventExtensions(myObject);</span><br><span class="line">myObject.b = <span class="number">3</span>;</span><br><span class="line">myObject.b; <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<h4 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h4><p><code>Object.seal()</code> 会创建一个密封的对象，这个方法实际上会在一个现有对象上调用<code>Object.preventExtensions()</code>并把所有现有属性标记为<code>configurable:false</code> 。</p>
+<p>所以，密封之后不仅不能添加新属性，也不能重新配置或者删除任何现有属性（不过可以修改现有属性的值）。</p>
+<h4 id="冻结"><a href="#冻结" class="headerlink" title="冻结"></a>冻结</h4><p><code>Object.freeze()</code>会创建一个冻结对象，这个方法<strong>实际上会在一个现有对象上调用<code>Object.seal()</code>，并且把所有属性标记为<code>writable:false</code>，是你可以应用在对象上的级别最高的不可变性</strong>。</p>
+<h3 id="Get"><a href="#Get" class="headerlink" title="[[Get]]"></a>[[Get]]</h3><p>有如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line">myObject.a; <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>其中，<code>myObject.a</code>是一次属性访问，但是这条语句并不仅仅是在<code>myObject</code>中查找名为<code>a</code>的属性。<code>myObject.a</code>在<code>myObject</code>上实际上是实现了<code>[[Get]]</code>操作（类似于调用函数<code>[[Get]]()</code> 。如果无论如何都没有找到名称相同的属性，那么<code>[[Get]]</code>操作将会返回值<code>undefined</code> ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line">myObject.b; <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>此处需要<strong>注意</strong>两点：</p>
+<ul>
+<li>仅通过返回值，你无法判断一个属性是存在的（值为<code>undefined</code>），还是变量不存在；</li>
+<li><strong>这种方法和访问变量时不同</strong>。如果你引用了一个当前词法作用域中不存在的变量，并不会像对象属性一样返回<code>undefined</code>，而是会抛出一个<code>ReferenceError</code>异常。</li>
+</ul>
+<h3 id="Getter和Setter"><a href="#Getter和Setter" class="headerlink" title="Getter和Setter"></a>Getter和Setter</h3><p>在ES5中可以使用<code>getter</code>和<code>setter</code>部分改写某个属性的默认操作。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    get a() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(</span><br><span class="line">	myObject,</span><br><span class="line">    <span class="string">"b"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">        get： <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        	<span class="keyword">return</span> <span class="keyword">this</span>.a * <span class="number">2</span>; </span><br><span class="line">    	&#125;,</span><br><span class="line">    	enumerable：<span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">)；</span><br><span class="line"></span><br><span class="line">myObject.a; <span class="comment">//2</span></span><br><span class="line">myObject.b; <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<p>不管是对象文字语法中的<code>get a() {..}</code>，还是<code>defineProperty(..)</code>中的显式定义，二<strong>者都会在对象中创建一个不包含值的属性，对于这个属性的访问会自动调用一个隐藏函数，它的返回值会被当做属性访问的返回值</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    get a() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">myObject.a = <span class="number">3</span>;</span><br><span class="line">myObject.a; <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>由于我们只定义了<code>a</code>的<code>getter</code>，所以对<code>a</code>的值进行设置时<code>set</code>操作会忽略赋值操作。我们可以这样设置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    get a() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._a_;</span><br><span class="line">    &#125;,</span><br><span class="line">    set a(val) &#123;</span><br><span class="line">        <span class="keyword">this</span>._a_ = val * <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="存在性"><a href="#存在性" class="headerlink" title="存在性"></a>存在性</h3><p>正如之前所说的，若是我们访问对象中的一个属性时，要是返回<code>undefined</code> ，那么我们这时候应该如何判断这个属性是存在的还是不存在？</p>
+<p>我们可以用<code>in</code>操作符：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line">(<span class="string">"a"</span> <span class="keyword">in</span> myObject);<span class="comment">// true</span></span><br><span class="line">(<span class="string">"b"</span> <span class="keyword">in</span> myObject);<span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">myObject.hasOwnProperty(<span class="string">"a"</span>); <span class="comment">//true</span></span><br><span class="line">myObject.hasOwnProperty(<span class="string">"b"</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>不过需要<strong>注意</strong>的是：<code>in</code>操作符会检查属性是否在对象<strong>及其<code>[[Prototype]]</code>原型链</strong>中。而<code>hasOwnProperty()</code> 只会检查属性是否在该对象中。</p>
+<p>而<strong>不论属性的属性描述符的<code>enumerable</code>值是否为<code>false</code> ，<code>in</code>操作符和<code>hasOwnProperty()</code> 函数都会返回该属性</strong> ，不同的是：</p>
+<ul>
+<li><code>propertyIsEnumerable()</code>函数会检查给定的属性名是否直接存在于对象中，并且满足<code>enumerable:true</code>；</li>
+<li><code>Obejct.keys()</code> 会返回一个数组，包含所有的可枚举属性；</li>
+<li>而<code>getOwnPropertyNames()</code> 则会返回一个数组，<strong>包含所有属性，无论它们是否可枚举</strong>；</li>
+</ul>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者: <a href="http://yoursite.com">Eric</a>
+            <p>原文链接: <a href="http://yoursite.com/2018/06/24/UDKjs(3)/">http://yoursite.com/2018/06/24/UDKjs(3)/</a>
+            <p>发表日期: <a href="http://yoursite.com/2018/06/24/UDKjs(3)/">June 24th 2018, 10:40:30</a>
+            <p>版权声明: 本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/06/19/柯里化/" title= 浅谈柯里化 >
+                    <div class="prevTitle">浅谈柯里化</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ericy9707@foxmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/EricYeee" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/wechat.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+            
+                <a href="//weibo.com/p/1005055709928167/home" class="iconfont-archer weibo" target="_blank" title=weibo></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//space.bilibili.com/11448910/" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#你不知道的JavaScript读书笔记-3"><span class="toc-number">1.</span> <span class="toc-text">你不知道的JavaScript读书笔记(3)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#this全面解析"><span class="toc-number">1.1.</span> <span class="toc-text">this全面解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定规则"><span class="toc-number">1.1.1.</span> <span class="toc-text">绑定规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认绑定"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">默认绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式绑定"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">隐式绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显式绑定"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">显式绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new绑定"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">new绑定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先级"><span class="toc-number">1.1.2.</span> <span class="toc-text">优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#被忽略的this"><span class="toc-number">1.1.3.</span> <span class="toc-text">被忽略的this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#箭头函数中的this"><span class="toc-number">1.1.4.</span> <span class="toc-text">箭头函数中的this</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">1.2.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型"><span class="toc-number">1.2.1.</span> <span class="toc-text">类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可计算属性名"><span class="toc-number">1.2.2.</span> <span class="toc-text">可计算属性名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组"><span class="toc-number">1.2.3.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制对象"><span class="toc-number">1.2.4.</span> <span class="toc-text">复制对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性描述符"><span class="toc-number">1.2.5.</span> <span class="toc-text">属性描述符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不变性"><span class="toc-number">1.2.6.</span> <span class="toc-text">不变性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对象常量"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">对象常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#禁止扩展"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">禁止扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#密封"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">密封</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#冻结"><span class="toc-number">1.2.6.4.</span> <span class="toc-text">冻结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Get"><span class="toc-number">1.2.7.</span> <span class="toc-text">[[Get]]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getter和Setter"><span class="toc-number">1.2.8.</span> <span class="toc-text">Getter和Setter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存在性"><span class="toc-number">1.2.9.</span> <span class="toc-text">存在性</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 40 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2018/06/24/UDKjs(3)/" >你不知道的JavaScript读书笔记(3)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span><a class="archive-post-title" href= "/2018/06/19/柯里化/" >浅谈柯里化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/18</span><a class="archive-post-title" href= "/2018/06/18/UDKjs(2)/" >你不知道的JavaScript读书笔记(2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/UDKjs(1)/" >你不知道的JavaScript读书笔记(1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2018/05/27/webpack/" >深入浅出webpack学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2018/05/21/mongoose/" >Mongoose入门指南</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2018/05/21/git/" >GIT使用手册</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/18</span><a class="archive-post-title" href= "/2018/05/18/Express/" >Express入门指南</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/config-lite/" >config-lite</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/ESLint-EditorConfig/" >ESLint与EditorConfig</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2018/05/12/MongoDB/" >MongoDB基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2018/04/02/Event Loop/" >Event Loop</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2018/03/25/多栏布局/" >多栏布局</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2018/03/24/隐藏元素的方法/" >隐藏页面元素的方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/16</span><a class="archive-post-title" href= "/2018/03/16/DNS详解/" >DNS详解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2018/03/08/Ajax/" >JS中的Ajax</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/ES6/" >ES6学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/src与href/" >src与href的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/typesOfJs/" >JS中的数据类型与操作符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/2018/02/06/RESTful/" >RESTful学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/05</span><a class="archive-post-title" href= "/2018/02/05/CodeIgniter/" >CodeIgniter学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/02</span><a class="archive-post-title" href= "/2018/02/02/less/" >less学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/20</span><a class="archive-post-title" href= "/2018/01/20/sass/" >SASS学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2018/01/12/css中的层叠/" >CSS中的层叠</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/27</span><a class="archive-post-title" href= "/2017/12/27/webpackAsync/" >webpack异步加载原理</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
+        <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
+    
+        <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
+    
+        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
+    
+        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
+    
+        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
+    
+        <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
+    
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
+    
+        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
+    
+        <span class="sidebar-tag-name" data-tags="Sass"><span class="iconfont-archer">&#xe606;</span>Sass</span>
+    
+        <span class="sidebar-tag-name" data-tags="Scss"><span class="iconfont-archer">&#xe606;</span>Scss</span>
+    
+        <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
+    
+        <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: false</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: '/',
+        author: 'Eric'
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+    
+    </body>
+</html>
+
+
