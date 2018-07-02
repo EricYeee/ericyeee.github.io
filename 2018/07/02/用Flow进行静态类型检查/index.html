@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>EricYeee&#39;s documents</title>
+    <title>用Flow进行静态类型检查 · EricYeee&#39;s documents</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -70,6 +70,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180524 as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= /css/mobile.css?v=20180524 media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -191,12 +193,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >EricYeee&#39;s documents</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">用Flow进行静态类型检查</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>EricYeee's documents</a>
 </header>
@@ -210,24 +223,74 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            用Flow进行静态类型检查
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count">1,288</span> / Reading time: <span class="post-count">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/07/02</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -327,362 +390,99 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/02/15/typesOfJs/" >
-                
-                    <span>JS中的数据类型与操作符</span>
-            </a>
-            <div class="abstract-content">
-                JS中的数据类型与操作符分类
-基本数据类型：
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="用Flow进行静态类型检查"><a href="#用Flow进行静态类型检查" class="headerlink" title="用Flow进行静态类型检查"></a>用Flow进行静态类型检查</h1><h2 id="为什么要静态类型检查"><a href="#为什么要静态类型检查" class="headerlink" title="为什么要静态类型检查"></a>为什么要静态类型检查</h2><p><code>JavaScript</code>是一门非常灵活的弱类型语言，这是它的优点也是它的缺点。<strong>在声明变量之后通常可以随意更改该变量的数据类型</strong>，因此常常会导致出现那些在编译阶段没有报错，但是在执行时发生各种各样奇怪现象的<code>BUG</code> 。这时候就需要引入类型检查，使得<strong>在代码编译阶段就能发现隐患</strong> 。同时为了不影响代码运行时的性能，相比动态类型检查，我们更愿意选择静态类型检查。而<code>Flow</code>就是一个很好的选择。</p>
+<h2 id="Flow是什么"><a href="#Flow是什么" class="headerlink" title="Flow是什么"></a>Flow是什么</h2><p><code>Flow</code>是由<code>Facebook</code>出品的<code>JavaScript</code>静态类型检查工具。单论类型检查，我们还可以选择<code>TypeScript</code>，但是对于一个需要添加添加静态类型检查的项目来说，使用<code>TypeScript</code>意味着需要<strong>重构整个项目</strong> ，成本太高。所以对比之下，在这种情境，<code>Flow</code>一定是一个更好的选择。</p>
+<h2 id="Flow的使用示例"><a href="#Flow的使用示例" class="headerlink" title="Flow的使用示例"></a>Flow的使用示例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + <span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">'Hello!'</span>)</span><br></pre></td></tr></table></figure>
+<p>以上代码中，<code>foo</code>函数预期接受的参数是一个数字，而返回的结果也应该是<code>number</code>类型的，但是却出现了传入字符串参数返回字符串参数却并没有报错的情况（当然会这样，因为<code>JavaScript</code>是弱类型语言啊）。这就偏离了我们的期望，可以利用<code>Flow</code>来进行改写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @flow</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x: number</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + <span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">'hi'</span>)</span><br></pre></td></tr></table></figure>
+<p>以上代码限制了参数<code>x</code>的类型为<code>number</code>，并且函数的返回值类型也为<code>number</code>，要是两者中有任何一者没有达到预期的值，那么<code>Flow</code>就会报错。</p>
+<h2 id="如何使用Flow"><a href="#如何使用Flow" class="headerlink" title="如何使用Flow"></a>如何使用Flow</h2><p>① 安装了<code>flow</code>之后，在项目根目录运行一下代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flow init</span><br></pre></td></tr></table></figure>
+<p>该代码会在当前目录生成一个<code>.flowconfig</code> 文件用以配置。</p>
+<p>② 在代码的最上面一行加入以下注释：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @flow</span></span><br></pre></td></tr></table></figure>
+<p>或者是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* @flow */</span></span><br></pre></td></tr></table></figure>
+<p>③ 接下来我们可以利用各个<code>ide</code>中的插件来进行<code>flow</code>检查，或者也可以运行以下代码进行检查：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flow check</span><br></pre></td></tr></table></figure>
+<p>④ 除此之外，我们还需要在编译的时候去除我们添加上去的<code>/* @flow */</code> 注释，这就通常需要<code>babel</code> 的帮助。我们先要安装<code>babel</code>的一个插件<code>babel-plugin-transform-flow-strip-types</code> ，然后在<code>.babelrc</code> 文件中添加以下配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"plugins"</span>: [</span><br><span class="line">    <span class="string">"transform-flow-strip-types"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样以后，之后再<code>babel</code>进行编译时就会一并转换<code>Flow</code>标记。</p>
+<h2 id="Flow支持的数据类型"><a href="#Flow支持的数据类型" class="headerlink" title="Flow支持的数据类型"></a>Flow支持的数据类型</h2><h3 id="基础类型检测"><a href="#基础类型检测" class="headerlink" title="基础类型检测"></a>基础类型检测</h3><p><code>Flow.js</code>中定义了五种基础数据类型（其中<code>void</code>类型对应<code>JavaScript</code>中的<code>undefined</code>）：</p>
+<ul>
+<li>boolean</li>
+<li>number</li>
+<li>string</li>
+<li>null</li>
+<li>void</li>
+</ul>
+<p>所有的类型都<strong>可以使用垂直线符号<code>|</code> 来达到<code>OR</code>的效果</strong>，例如<code>string | number</code> 指的是<code>string</code>类型或者<code>number</code>类型。同时我们还可以使用<strong>可选类型</strong> 。可选类型通过在类型前加上<code>？</code> 来表示该变量的值可能并不存在（为<code>null</code>或者<code>undefined</code>）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num: number = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> str: string = <span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">let</span> bar: ?string = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="复杂类型检测"><a href="#复杂类型检测" class="headerlink" title="复杂类型检测"></a>复杂类型检测</h3><p><code>Flow.js</code>中还定义了一些复杂数据类型（注意：与基础类型不同，<strong>它们都为大写</strong>！）：</p>
+<ul>
+<li><p>Object：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj: <span class="built_in">Object</span> = &#123;</span><br><span class="line">  hello:<span class="string">'h'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//也可以这样定义</span></span><br><span class="line"><span class="keyword">let</span> object: &#123;<span class="attr">foo</span>: string, <span class="attr">bar</span>: number&#125; = &#123;<span class="attr">foo</span>: <span class="string">"foo"</span>, <span class="attr">bar</span>: <span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Array：</p>
+<p>数组类型使用的是<code>Array&lt;T&gt;</code>，例如<code>Array&lt;number&gt;</code>，会限定数组中的值只能使用数字的数据类型。当然你也可以加入垂直线<code>|</code>来定义允许多种类型，例如<code>Array&lt;number|string&gt;</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberArr: <span class="built_in">Array</span>&lt;number&gt; = [<span class="number">12</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="comment">//也可以用以下写法</span></span><br><span class="line"><span class="keyword">let</span> numberArr: number[] = [<span class="number">12</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数</p>
+<p>对于函数来说，我们通常只要求参数类型以及返回类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arg: number,arg2: string</span>): <span class="title">Object</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    arg,</span><br><span class="line">    arg2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="特殊的类型检测"><a href="#特殊的类型检测" class="headerlink" title="特殊的类型检测"></a>特殊的类型检测</h3><p>除了以上所说的类型检测，还有一个名为<strong>字面文字类型</strong>的检测。字面文字类型指的是以真实值作为数据类型，<strong>可用的值有三种，即数字、字符串或布尔值</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">type Suit =</span><br><span class="line">  | <span class="string">"Diamonds"</span></span><br><span class="line">  | <span class="string">"Clubs"</span></span><br><span class="line">  | <span class="string">"Hearts"</span></span><br><span class="line">  | <span class="string">"Spades"</span>;</span><br><span class="line"></span><br><span class="line">type Rank =</span><br><span class="line">  | <span class="number">2</span> | <span class="number">3</span> | <span class="number">4</span> | <span class="number">5</span> | <span class="number">6</span> | <span class="number">7</span> | <span class="number">8</span> | <span class="number">9</span> | <span class="number">10</span></span><br><span class="line">  | <span class="string">"Jack"</span></span><br><span class="line">  | <span class="string">"Queen"</span></span><br><span class="line">  | <span class="string">"King"</span></span><br><span class="line">  | <span class="string">"Ace"</span>;</span><br><span class="line"></span><br><span class="line">type Card = &#123;</span><br><span class="line">  suit: Suit,</span><br><span class="line">  rank: Rank,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时，我们还可以使用类型别名来<strong>预先定义和集中</strong>代码中所需要的类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">type T = <span class="built_in">Array</span>&lt;string&gt;</span><br><span class="line"><span class="keyword">let</span> x: T = []</span><br><span class="line">x[<span class="string">"Hi"</span>] = <span class="number">2</span> <span class="comment">//有Flow警告</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//我们可以利用export导出预先定义好的类型，例如：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> type NavigationRoute = &#123;</span><br><span class="line">  key: string,</span><br><span class="line">  title?: string</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> type NavigationState = &#123;</span><br><span class="line">  index: number,</span><br><span class="line">  routes: <span class="built_in">Array</span>&lt;NavigationRoute&gt;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>这篇文章参考了一下文章：</p>
+<ul>
+<li><a href="https://juejin.im/post/5967038d51882568b4630faa" target="_blank" rel="noopener">Flow静态类型检查及在Vue项目中的使用</a></li>
+<li><a href="https://segmentfault.com/a/1190000008088489" target="_blank" rel="noopener">Flow - JS静态类型检查工具</a></li>
+<li><a href="https://segmentfault.com/a/1190000006983211" target="_blank" rel="noopener">用flow.js提升前端开发的体验</a></li>
+</ul>
+<p>学习<code>Flow</code>的基本用法是为了阅读<code>vue</code>源码打基础，有关<code>Flow.js</code>的深入以及细节问题请查阅官方文档。</p>
 
-Undefined
-Null
-Boolean
-Number
-String
-
-
-复杂数据类型：
-
-Object
-
-
-
-特殊的值1234567891011121314151617//对于声明之后未赋值的变量，值为“undefined”var message;alert(typeof message); //"undefined"//对于尚未声明的变量，值也为“undefined”//var age;alert(typeof age); //"undefined"//对于值null，typeof的值为“object”var sky = null;...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/15</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+    </article>
+    <!-- license  -->
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/02/08/FetchAPI/" >
-                
-                    <span>Fetch API学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                Fetch API学习笔记Fetch是一个现代的概念, 等同于 XMLHttpRequest。它提供了许多与XMLHttpRequest相同的功能，但被设计成更具可扩展性和高效性。
-示例在Fetch API中，最常用的就是fetch()函数。它接收一个URL参数，返回一个promise来处理response。response参数带着一个Response对象。
-123456789101112fetch(&quot;/data.json&quot;).then(function(res) &#123;  // res instanceof Response == true.  if (res...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/02/08/CodeIgniter-Rest-Server/" >
-                
-                    <span>CodeIgniter Rest Server 学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                CodeIgniter Rest Server 学习笔记什么是CodeIgniter Rest Server？利用一个库文件、一个配置文件以及一个控制器就可以实现完整的CodeIgniter开发RESTful架构API的一个工具。
-Installation只需要向CodeIgniter文件夹中的composer.json文件添加一下代码：
-1"chriskacerguis/codeigniter-restserver": "^3.0"
-然后运行一下命令安装依赖包：
-1composer install
-Handling Requests当你的控制器继承REST_Controller 的时候...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CodeIgniter">CodeIgniter</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "PHP">PHP</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/02/06/RESTful/" >
-                
-                    <span>RESTful学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                RESTful学习笔记RESTful是什么？它的本质是一种软件架构风格，核心是面向资源（面向资源去设计API），它解决的问题有：①降低开发的复杂性②提高系统的可伸缩性。
-设计概念和准则
-网络上所有事物都可以被抽象为资源
-每个资源都有唯一的资源标识，对资源的操作不会改变这些标识（例如对某一资源进行删除操作，删除完成后，它的资源标识还是有效的，只不过这个资源标识代表的资源不存在了）
-所有的操作都是无状态的（前一次操作和后一次操作没有关联）
-
-HTTP协议URLHTTP是属于应用层的协议，特点是简洁、快速。
-schema://host[:port]/path[?query-string][#a...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/06</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "RESTful">RESTful</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/02/05/CodeIgniter/" >
-                
-                    <span>CodeIgniter学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                CodeIgniter学习笔记概览应用程序流程图
-
-index.php 文件作为前端控制器，初始化运行 CodeIgniter 所需的基本资源；
-Router 检查 HTTP 请求，以确定如何处理该请求；
-如果存在缓存文件，将直接输出到浏览器，不用走下面正常的系统流程；
-在加载应用程序控制器之前，对 HTTP 请求以及任何用户提交的数据进行安全检查；
-控制器加载模型、核心类库、辅助函数以及其他所有处理请求所需的资源；
-最后一步，渲染视图并发送至浏览器，如果开启了缓存，视图被会先缓存起来用于 后续的请求。
-
-模型-视图-控制器CodeIgniter 的开发基于 MVC（模型-视图-控制器）...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/05</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CodeIgniter">CodeIgniter</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "PHP">PHP</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/02/02/less/" >
-                
-                    <span>less学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                less学习笔记导入可以通过下面的形势引入 .less 文件, .less 后缀可带可不带:
-12@import "lib.less";@import "lib";
-如果导入一个CSS文件而且不想LESS对它进行处理，只需要使用.css后缀就行：
-1@import "lib.css";
-变量less的变量和sass的变量类似（使用@而不是$），但是相比之下缺少默认变量（!default）、特殊变量（将变量值作为属性值）和多值变量 ：
-1234@nice-blue: #5B83AD;@light-blue: @nice-blue + #111;#header &#123; color: @...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/02</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Less">Less</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/01/20/sass/" >
-                
-                    <span>SASS学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                SASS学习笔记文件后缀名sass有两种后缀名文件：一种后缀名为sass，不使用大括号和分号；另一种是scss文件，这种和我们平时写的css文件格式差不多，使用大括号和分号。建议使用后缀名为scss的文件，以避免sass后缀名的严格格式要求报错。
-导入sass的导入( @import)规则和css的有所不同，编译时会将 @import的scss文件合并进来只生成一个css文件。但是如果你在sass文件中导入css文件如 @import &#39;reset.css&#39;，那效果跟普通css导入样式文件一样，导入的css文件不会合并到编译后的文件中，而是以@import方式存在。
-所有...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/20</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Sass">Sass</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Scss">Scss</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/01/19/keep-alive/" >
-                
-                    <span>vue2.0中keep-alive实践</span>
-            </a>
-            <div class="abstract-content">
-                vue2.0中keep-alive实践vue2.0提供了一个keep-alive组件，用来缓存组件,避免多次加载相应的组件,减少性能消耗。
-1.缓存所有页面1234//在router的根页面下&lt;keep-alive&gt;  &lt;router-view&gt;&lt;/router-view&gt;&lt;/keep-alive&gt;
-2.缓存某些页面1234&lt;keep-alive&gt;    &lt;router-view v-if="$route.meta.keepAlive"&gt;&lt;/router-view&gt;&lt;/keep-alive&gt;&...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/19</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Vue">Vue</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/01/19/SVG/" >
-                
-                    <span>SVG学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                SVG学习笔记简介SVG使用XML来描述二维图形和绘图程序的语言。
-SVG形状SVG在HTML页面SVG 文件可通过以下标签嵌入 HTML 文档：embed、object 或者 iframe。
-例如：
-1&lt;iframe src="circle1.svg"&gt;&lt;/iframe&gt;
-也可以直接在HTML中嵌入SVG代码：
-123&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;   &lt;circle cx="100" cy="50" r="40" stroke="black" stroke-widt...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/19</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SVG">SVG</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/01/12/css中的层叠/" >
-                
-                    <span>CSS中的层叠</span>
-            </a>
-            <div class="abstract-content">
-                CSS中的层叠css的中文全称为层叠样式表，这暗示了层叠的重要性。
-我们常常遇到，两个选择器同时选中同一个元素，并且它们提供的样式造成了冲突的情况。那么此时，应该应用哪个样式呢？
-我们可以使用专用性来衡量。
-专用性专用性的评判标准如下：
-
-如果该声明是在style属性中（即内联样式），那么此声明增加1000分；
-若选择器中每包含一个id选择器，则此声明增加100分；
-如果选择器每包含一个类选择器、属性选择器或者伪类，就给该声明增加10分；
-若选择器中每包含一个元素选择器或伪元素，那么此声明就增加1分；
-
-以下为示例：
-
-
-
-选择器
-千位
-百位
-十位
-个位
-合计值
-
-
-
-
-h1
-0
-0
-0...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/12</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-</div>
-                
-            </div>
-        </article>
+        <div class="license-wrapper">
+            <p>原文作者: <a href="http://yoursite.com">Eric</a>
+            <p>原文链接: <a href="http://yoursite.com/2018/07/02/用Flow进行静态类型检查/">http://yoursite.com/2018/07/02/用Flow进行静态类型检查/</a>
+            <p>发表日期: <a href="http://yoursite.com/2018/07/02/用Flow进行静态类型检查/">July 2nd 2018, 9:20:12</a>
+            <p>版权声明: 本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/06/24/UDKjs(3)/" title= 你不知道的JavaScript读书笔记(3) >
+                    <div class="prevTitle">你不知道的JavaScript读书笔记(3)</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2018/page/3/">&#60; PREV</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
     
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -767,6 +567,24 @@ h1
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用Flow进行静态类型检查"><span class="toc-number">1.</span> <span class="toc-text">用Flow进行静态类型检查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要静态类型检查"><span class="toc-number">1.1.</span> <span class="toc-text">为什么要静态类型检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flow是什么"><span class="toc-number">1.2.</span> <span class="toc-text">Flow是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flow的使用示例"><span class="toc-number">1.3.</span> <span class="toc-text">Flow的使用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用Flow"><span class="toc-number">1.4.</span> <span class="toc-text">如何使用Flow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flow支持的数据类型"><span class="toc-number">1.5.</span> <span class="toc-text">Flow支持的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础类型检测"><span class="toc-number">1.5.1.</span> <span class="toc-text">基础类型检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂类型检测"><span class="toc-number">1.5.2.</span> <span class="toc-text">复杂类型检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊的类型检测"><span class="toc-number">1.5.3.</span> <span class="toc-text">特殊的类型检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1727,6 +1545,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>

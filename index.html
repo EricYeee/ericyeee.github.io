@@ -347,6 +347,33 @@ height:50vh;
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/07/02/用Flow进行静态类型检查/" >
+                
+                    <span>用Flow进行静态类型检查</span>
+            </a>
+            <div class="abstract-content">
+                用Flow进行静态类型检查为什么要静态类型检查JavaScript是一门非常灵活的弱类型语言，这是它的优点也是它的缺点。在声明变量之后通常可以随意更改该变量的数据类型，因此常常会导致出现那些在编译阶段没有报错，但是在执行时发生各种各样奇怪现象的BUG 。这时候就需要引入类型检查，使得在代码编译阶段就能发现隐患 。同时为了不影响代码运行时的性能，相比动态类型检查，我们更愿意选择静态类型检查。而Flow就是一个很好的选择。
+Flow是什么Flow是由Facebook出品的JavaScript静态类型检查工具。单论类型检查，我们还可以选择TypeScript，但是对于一个需要添加添加静态类型检...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/06/24/UDKjs(3)/" >
                 
                     <span>你不知道的JavaScript读书笔记(3)</span>
@@ -559,39 +586,6 @@ meta标签中name属性语法格式是：
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/21/mongoose/" >
-                
-                    <span>Mongoose入门指南</span>
-            </a>
-            <div class="abstract-content">
-                Mongoose入门指南安装当你已经安装了MongoDB和Node.js之后，你就可以安装mongoose ：
-1$ npm install mongoose
-连接第一步我们需要做的，就是在项目中引入mongoose，并且代替使用MongoDB来连接到需要操作的数据库：
-12var mongoose = require('mongoose');mongoose.connect('mongodb://localhost/test');
-当以上代码生效时，我们将会有一个持续链接本地数据库的连接，我们可以对其进行监听：
-12345var db = mongoose.connection;db....
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/21</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NodeJS">NodeJS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "MongoDB">MongoDB</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
             <a class="abstract-title" href = "/2018/05/21/git/" >
                 
                     <span>GIT使用手册</span>
@@ -627,20 +621,22 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/18/Express/" >
+            <a class="abstract-title" href = "/2018/05/21/mongoose/" >
                 
-                    <span>Express入门指南</span>
+                    <span>Mongoose入门指南</span>
             </a>
             <div class="abstract-content">
-                Express入门指南路由路由是指如何定义应用的端点（URIs）以及如何响应客户端的请求。 
-路由是由一个 URI、HTTP 请求（GET、POST等）和若干个句柄组成，它的结构如下： app.METHOD(path, [callback...], callback)， app 是 express 对象的一个实例， METHOD 是一个 HTTP 请求方法， path 是服务器上的路径， callback 是当路由匹配时要执行的函数。
-下面是一个基本的路由示例：
-1234567var express = require('express');var app = express();// ...
+                Mongoose入门指南安装当你已经安装了MongoDB和Node.js之后，你就可以安装mongoose ：
+1$ npm install mongoose
+连接第一步我们需要做的，就是在项目中引入mongoose，并且代替使用MongoDB来连接到需要操作的数据库：
+12var mongoose = require('mongoose');mongoose.connect('mongodb://localhost/test');
+当以上代码生效时，我们将会有一个持续链接本地数据库的连接，我们可以对其进行监听：
+12345var db = mongoose.connection;db....
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/18</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/21</span>
                 </div>
                 <!-- tags  -->
                 
@@ -648,7 +644,7 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "NodeJS">NodeJS</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "express">express</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "MongoDB">MongoDB</a>
     
 </div>
                 
@@ -658,7 +654,7 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1465,7 +1461,8 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
     
     
-    <div class="total-archive"> Total : 40 </div>
+    
+    <div class="total-archive"> Total : 41 </div>
     
     <div class="post-archive">
     
@@ -1474,6 +1471,11 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/02</span><a class="archive-post-title" href= "/2018/07/02/用Flow进行静态类型检查/" >用Flow进行静态类型检查</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1497,12 +1499,12 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/meta/" >HTML中的meta标签</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2018/05/30/rem/" >利用rem进行适配</a>
         </li>
     
     
@@ -1567,17 +1569,17 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/数组去重的方法/" >数组去重</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
         </li>
     
     
@@ -1627,12 +1629,12 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
         </li>
     
     
@@ -1657,12 +1659,12 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
         </li>
     
     
@@ -1697,39 +1699,39 @@ Merge我们通常新建一个分支，在其上开发某个功能，开发完成
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
-        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
-    
         <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
     
         <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
     
+        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
+    
         <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
+    
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
+    
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
     
         <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
-        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
-    
         <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
     
-        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
-    
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
-    
         <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
     
         <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
     
         <span class="sidebar-tag-name" data-tags="Sass"><span class="iconfont-archer">&#xe606;</span>Sass</span>
     
         <span class="sidebar-tag-name" data-tags="Scss"><span class="iconfont-archer">&#xe606;</span>Scss</span>
     
         <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
-    
-        <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
