@@ -332,17 +332,13 @@
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/Call/" >
+            <a class="abstract-title" href = "/2018/04/08/new/" >
                 
-                    <span>Call,aplly与bind</span>
+                    <span>深入理解new操作符</span>
             </a>
             <div class="abstract-content">
-                详解call、apply和bind在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到接花移木的效果。
-call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。
-
-不传，或者传null,undefined， 函数中的 this 指向 window 对象
-传递另一个函数的函数名，函数中的 this 指向这个函数的引用
-传递字符串、数值或布尔类型等基础类型，函数中...
+                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
+1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -363,13 +359,17 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/new/" >
+            <a class="abstract-title" href = "/2018/04/08/Call/" >
                 
-                    <span>深入理解new操作符</span>
+                    <span>Call,aplly与bind</span>
             </a>
             <div class="abstract-content">
-                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
-1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
+                详解call、apply和bind在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到接花移木的效果。
+call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。
+
+不传，或者传null,undefined， 函数中的 this 指向 window 对象
+传递另一个函数的函数名，函数中的 this 指向这个函数的引用
+传递字符串、数值或布尔类型等基础类型，函数中...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -519,40 +519,6 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/01/回流和重绘/" >
-                
-                    <span>重绘和回流</span>
-            </a>
-            <div class="abstract-content">
-                重绘和回流浏览器向服务器请求到了HTML文档后便开始解析，产物是DOM Tree（文档对象模型），如果有css，会根据css生成CSSOM（CSS对象模型），然后再由DOM和CSSOM合并产生Render Tree渲染树，有了渲染树，知道了所有节点的样式，便根据这些节点以及样式计算它们在浏览器中确切的大小和位置，这就是布局。最后把节点绘制到浏览器上。
-
-重绘（repaint）当页面元素样式改变不影响元素在文档流中的位置时，浏览器会进行重绘操作，例如：
-
-改变background-color 
-改变border-color
-改变visibility
-
-回流（reflow）当render t...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
             <a class="abstract-title" href = "/2018/04/01/深浅拷贝/" >
                 
                     <span>深浅拷贝</span>
@@ -579,6 +545,40 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
                 <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/04/01/回流和重绘/" >
+                
+                    <span>重绘和回流</span>
+            </a>
+            <div class="abstract-content">
+                重绘和回流浏览器向服务器请求到了HTML文档后便开始解析，产物是DOM Tree（文档对象模型），如果有css，会根据css生成CSSOM（CSS对象模型），然后再由DOM和CSSOM合并产生Render Tree渲染树，有了渲染树，知道了所有节点的样式，便根据这些节点以及样式计算它们在浏览器中确切的大小和位置，这就是布局。最后把节点绘制到浏览器上。
+
+重绘（repaint）当页面元素样式改变不影响元素在文档流中的位置时，浏览器会进行重绘操作，例如：
+
+改变background-color 
+改变border-color
+改变visibility
+
+回流（reflow）当render t...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
     
 </div>
                 
@@ -1297,7 +1297,20 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
     
-    <div class="total-archive"> Total : 41 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 42 </div>
     
     <div class="post-archive">
     
@@ -1306,6 +1319,11 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/05</span><a class="archive-post-title" href= "/2018/07/05/UDKjs(4)/" >你不知道的JavaScript读书笔记(4)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1389,12 +1407,12 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/flex/" >Flex布局</a>
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/scrollTop/" >scrollTop等元素距离</a>
         </li>
     
     
@@ -1404,12 +1422,12 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
         </li>
     
     
@@ -1464,12 +1482,12 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
         </li>
     
     
@@ -1526,29 +1544,31 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
-    
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
+        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
+    
+        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
+    
         <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
     
         <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
     
-        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
-    
-        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
-    
         <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
-    
-        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
     
         <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
+        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
+    
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+    
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
         <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
@@ -1556,11 +1576,9 @@ window对象window.innerWidth与window.outerWidthwindow.innerWidth（打开窗�
     
         <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
     
-        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
-    
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
-    
         <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
     
         <span class="sidebar-tag-name" data-tags="Sass"><span class="iconfont-archer">&#xe606;</span>Sass</span>
     
