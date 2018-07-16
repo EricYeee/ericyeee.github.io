@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>EricYeee&#39;s documents</title>
+    <title>WebSocket学习笔记 · EricYeee&#39;s documents</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -70,6 +70,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180524 as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= /css/mobile.css?v=20180524 media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -191,14 +193,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >EricYeee&#39;s documents</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">WebSocket学习笔记</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>EricYeee's documents</a>
 </header>
@@ -219,17 +230,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/background.png)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            EricYeee's documents
-            <!-- 文章页  -->
+            WebSocket学习笔记
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -237,12 +248,49 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                the theme is so cool, isn't it?
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "WebSocket">WebSocket</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count">926</span> / Reading time: <span class="post-count">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2017/06/07</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -342,424 +390,93 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/01/回流和重绘/" >
-                
-                    <span>重绘和回流</span>
-            </a>
-            <div class="abstract-content">
-                重绘和回流浏览器向服务器请求到了HTML文档后便开始解析，产物是DOM Tree（文档对象模型），如果有css，会根据css生成CSSOM（CSS对象模型），然后再由DOM和CSSOM合并产生Render Tree渲染树，有了渲染树，知道了所有节点的样式，便根据这些节点以及样式计算它们在浏览器中确切的大小和位置，这就是布局。最后把节点绘制到浏览器上。
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h1><p><code>WebSocket</code>是一种网络通信协议，它位于应用层当中。</p>
+<h2 id="为什么需要WebSocket？"><a href="#为什么需要WebSocket？" class="headerlink" title="为什么需要WebSocket？"></a>为什么需要WebSocket？</h2><p>要说为什么要使用<code>WebSocket</code>，我们需要先了解同为应用层协议的HTTP的缺点：</p>
+<ul>
+<li>它是单向的；</li>
+<li>它是无状态的；</li>
+<li>它是无连接的；</li>
+<li>……</li>
+</ul>
+<p>这样造成的问题就是：如果我们想要写一个拥有聊天室功能或者股票实时查看功能的软件时候，我们<strong>经常需要对服务器进行轮询</strong> ，否则没办法及时地获得更新。但是轮询的效率非常低，并且浪费资源（轮询会加重客户端的负担，长轮询对服务器的并行处理能力要求高）。因此<code>WebSocket</code>应运而生。</p>
+<h2 id="关于WebSocket"><a href="#关于WebSocket" class="headerlink" title="关于WebSocket"></a>关于WebSocket</h2><p><code>Websocket</code>最大的特点就是服务器可以主动地向客户端推送信息，是真正的双向平等对话：<img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png" alt="img"> </p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051503.jpg" alt="img"> </p>
+<h2 id="如果使用WebSocket"><a href="#如果使用WebSocket" class="headerlink" title="如果使用WebSocket?"></a>如果使用WebSocket?</h2><p>以下是一个客户端使用<code>WebSocket</code>的完整示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">"wss://echo.websocket.org"</span>);</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection open ..."</span>); </span><br><span class="line">  ws.send(<span class="string">"Hello WebSockets!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"Received Message: "</span> + evt.data);</span><br><span class="line">  ws.close();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection closed."</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket的构造函数"><a href="#WebSocket的构造函数" class="headerlink" title="WebSocket的构造函数"></a>WebSocket的构造函数</h3><p>我们可以使用<code>WebSocket</code>的构造函数生成一个实例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:8080'</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>在该实例生成时</strong>，客户端就会与服务器进行连接。</p>
+<h3 id="WebSocket-readyState"><a href="#WebSocket-readyState" class="headerlink" title="WebSocket.readyState"></a>WebSocket.readyState</h3><p><code>readyState</code> 是<code>WebSocket</code>的一个属性，它一共有以下四种取值：</p>
+<ul>
+<li>CONNECTING：值为0，表示正在连接；</li>
+<li>OPEN：值为1，表示已经连接，可以进行通信了；</li>
+<li>CLOSING：值为2，表示连接正在关闭；</li>
+<li>CLOSED：值为3，表示连接已经关闭，<strong>或者打开连接失败</strong>；</li>
+</ul>
+<h3 id="WebSocket-onopen"><a href="#WebSocket-onopen" class="headerlink" title="WebSocket.onopen"></a>WebSocket.onopen</h3><p>实例对象中的<code>onopen</code> 属性（注意是小写），值为连接成功后的回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  ws.send(<span class="string">'Hello Server!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>不过如果我们想要指定多个回调函数，就要使用<code>addEventListener</code>方法</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.addEventListener(<span class="string">'open'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    ws.send(<span class="string">'Hello Server!'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-onclose"><a href="#WebSocket-onclose" class="headerlink" title="WebSocket.onclose"></a>WebSocket.onclose</h3><p>实例对象中的<code>onclose</code> 属性，值为连接关闭后的回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> code = event.code;</span><br><span class="line">  <span class="keyword">var</span> reason = event.reason;</span><br><span class="line">  <span class="keyword">var</span> wasClean = event.wasClean;</span><br><span class="line">  <span class="comment">// handle close event</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.addEventListener(<span class="string">"close"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> code = event.code;</span><br><span class="line">  <span class="keyword">var</span> reason = event.reason;</span><br><span class="line">  <span class="keyword">var</span> wasClean = event.wasClean;</span><br><span class="line">  <span class="comment">// handle close event</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-onmessage"><a href="#WebSocket-onmessage" class="headerlink" title="WebSocket.onmessage"></a>WebSocket.onmessage</h3><p>实例对象中的<code>onmessage</code> 属性，值为收到服务器发送的数据后的回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data;</span><br><span class="line">  <span class="comment">// 处理数据</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.addEventListener(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data;</span><br><span class="line">  <span class="comment">// 处理数据</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-onerror"><a href="#WebSocket-onerror" class="headerlink" title="WebSocket.onerror"></a>WebSocket.onerror</h3><p>实例对象的<code>onerror</code>属性，用于指定报错时的回调函数。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">socket.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.addEventListener(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-binaryType"><a href="#WebSocket-binaryType" class="headerlink" title="WebSocket.binaryType"></a>WebSocket.binaryType</h3><p>我们可以使用实例对象中的<code>binaryType</code>属性来实现手动指定收到的<strong>二进制数据类型</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 收到的是 blob 数据</span></span><br><span class="line">ws.binaryType = <span class="string">"blob"</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.data.size);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 收到的是 ArrayBuffer 数据</span></span><br><span class="line">ws.binaryType = <span class="string">"arraybuffer"</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.data.byteLength);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="webSocket-bufferedAmount"><a href="#webSocket-bufferedAmount" class="headerlink" title="webSocket.bufferedAmount"></a>webSocket.bufferedAmount</h3><p>该属性用于表示还有多少字节的二进制数据没有发送出去。可以利用它来判断是否发送结束。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">10000000</span>);</span><br><span class="line">ws.send(data);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (ws.bufferedAmount === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// 发送完毕</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 发送还没结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-send"><a href="#WebSocket-send" class="headerlink" title="WebSocket.send()"></a>WebSocket.send()</h3><p>实例对象的<code>send()</code>方法用于向服务器发送数据。 </p>
+<p>发送文本的例子。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws.send(<span class="string">'your message'</span>);</span><br></pre></td></tr></table></figure>
+<p>发送 Blob 对象的例子。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span></span><br><span class="line">  .querySelector(<span class="string">'input[type="file"]'</span>)</span><br><span class="line">  .files[<span class="number">0</span>];</span><br><span class="line">ws.send(file);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-close"><a href="#WebSocket-close" class="headerlink" title="WebSocket.close()"></a>WebSocket.close()</h3><p>实例对象的<code>close()</code>方法用于客户端手动关闭连接。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws.close();</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html" target="_blank" rel="noopener">WebSocket教程</a>；</p>
 
-重绘（repaint）当页面元素样式改变不影响元素在文档流中的位置时，浏览器会进行重绘操作，例如：
-
-改变background-color 
-改变border-color
-改变visibility
-
-回流（reflow）当render t...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+    </article>
+    <!-- license  -->
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/01/深浅拷贝/" >
-                
-                    <span>深浅拷贝</span>
-            </a>
-            <div class="abstract-content">
-                深浅拷贝ECMAScript中的变量类型分为两种：
-
-基本类型： undefined、null、Boolean、String、Number。
-引用类型： 统称为Object类型，细分为：Object、Array、Date、Function等。
-
-不同类型变量的存储方式基本数据类型基本数据类型保存在栈内存，形式如下：栈内存中分别存储着变量的标识符以及变量的值。
-
-引用数据类型引用类型 保存在 堆内存 中， 栈内存存储的是变量的标识符以及对象在堆内存中的存储地址，当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从对应的堆内存中取得所需的数据。 
-
-什么是深浅...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/25/多栏布局/" >
-                
-                    <span>多栏布局</span>
-            </a>
-            <div class="abstract-content">
-                多栏布局两栏布局BFC法123456789101112131415161718192021&lt;html&gt;  &lt;head&gt;    &lt;style&gt;      .aside&#123;        height: 200px;        width: 100px;        float: left;      &#125;      .main&#123;        height: 200px;        overflow: hidden;      &#125;    &lt;/style&gt;  &lt;/head&gt;  &lt;b...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/25</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/24/隐藏元素的方法/" >
-                
-                    <span>隐藏页面元素的方法</span>
-            </a>
-            <div class="abstract-content">
-                隐藏页面元素的方法opacityopacity 属性的意思是设置一个元素的透明度。它不是为改变元素的边界框（bounding box）而设计的。这意味着将 opacity 设为 0 只能从视觉上隐藏元素。而元素本身依然占据它自己的位置并对网页的布局起作用。它也将响应用户交互。
-123.hide &#123;  opacity: 0;&#125;
-position假设有一个元素你想要与它交互，但是你又不想让它影响你的网页布局，没有合适的属性可以处理这种情况（opacity 和 visibility 影响布局， display 不影响布局但又无法直接交互）。在这种情况下，你只能考虑将元素移出...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/24</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/21/清除浮动/" >
-                
-                    <span>清除浮动</span>
-            </a>
-            <div class="abstract-content">
-                清除浮动浮动是什么？浮动元素会半脱离文档流并且向左/向右浮动，直到碰到父元素或者另一个浮动元素。
-利用clear清除浮动应用clear属性的元素不允许它的左边/右边挨着清除浮动。它的原理是：在被清除浮动的元素上边或者下边添加足够的清除空间。
-例如以下代码会造成高度坍塌：
-12345678910111213141516.box-wrapper &#123;  border: 5px solid red;&#125;.box-wrapper .box &#123;  float: left;   width: 100px;   height: 100px;   margin: 20px;  ...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/21</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/21/cookie与WebStorage/" >
-                
-                    <span>cookie与WebStorage</span>
-            </a>
-            <div class="abstract-content">
-                cookie、sessionStorage、localStorage 详解Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在，而Web Storage仅仅是为了在本地“存储”数据而生。
-cookiecookie是什么？简单来说，Cookie就是服务器暂存放在你的电脑里的资料（.txt格式的文本文件），好让服务器用来辨认你的计算机。当你在浏览网站的时候，Web服务器会先送一小小资料放在你的计算机上，Cookie 会把你在网站上所打的文字或是一些选择都记录下来。当下次你再访问同一个网站，Web服务器会先看看有没有它上次留下的Cookie资料，有的话，就会依据Cookie里的...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/21</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/16/DNS详解/" >
-                
-                    <span>DNS详解</span>
-            </a>
-            <div class="abstract-content">
-                DNS详解
-1.什么是DNS？DNS（Domain Name System，域名系统），因特网上作为域名和IP地址相互映射的一个分布式数据库 。由于DNS所以我们不用记住每个网页的IP地址，而只需要主机名就足够了。
-通过主机名（域名）利用DNS最终得到对应IP的过程称为域名解析。
-2.DNS的查询方式当局部DNS服务器自己不能回答客户机的DNS查询时，它就需要向其他DNS服务器进行查询。
-①递归查询局部DNS服务器自己负责向其他DNS服务器进行查询，一般是先向该域名（待查询域名）的根域服务器查询，再由根域名服务器一级级向下查询。最后得到的查询结果返回给局部DNS服务器，再由局部DNS服务...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/16</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DNS">DNS</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/08/Ajax/" >
-                
-                    <span>JS中的Ajax</span>
-            </a>
-            <div class="abstract-content">
-                JS中的AjaxAjax简介Ajax为 Asynchronous Javascript And XML 的缩写，这一技术能够向服务器请求额外的数据而无须卸载页面。
-XMLHttpRequest对象创建XHR对象12var xhr = new XMLHttpRequest();//对于IE只支持IE7+
-XHR的用法open()方法使用XHR对象时，要调用的第一个方法就是open() ，它接受3个参数：①要发送的请求的类型 ②请求的URL ③是否异步发送请求。
-1xhr.open("get", "example.php", false);
-需要注意两点：
-
-调用open()方法不会真正发送...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript ajax">JavaScript ajax</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/07/ES6/" >
-                
-                    <span>ES6学习笔记</span>
-            </a>
-            <div class="abstract-content">
-                ES6学习笔记ES6简介ES6 既是一个历史名词，也是一个泛指，含义是 5.1 版以后的 JavaScript 的下一代标准，涵盖了 ES2015、ES2016、ES2017 等等，而 ES2015 则是正式名称，特指该年发布的正式版本的语言标准。
-let和const命令let命令基本用法let的用法类似于var,但是所声明的变量，只在let命令所在的代码块内有效。（例如if语句和for语句）1234567&#123;  let a = 10;  var b = 1;&#125;a // ReferenceError: a is not defined.b // 1
-以下为for循环中的...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/07</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "ES6">ES6</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/02/15/typesOfJs/" >
-                
-                    <span>JS中的数据类型与操作符</span>
-            </a>
-            <div class="abstract-content">
-                JS中的数据类型与操作符分类
-基本数据类型：
-
-Undefined
-Null
-Boolean
-Number
-String
-
-
-复杂数据类型：
-
-Object
-
-
-
-特殊的值1234567891011121314151617//对于声明之后未赋值的变量，值为“undefined”var message;alert(typeof message); //"undefined"//对于尚未声明的变量，值也为“undefined”//var age;alert(typeof age); //"undefined"//对于值null，typeof的值为“object”var sky = null;...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/15</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
+        <div class="license-wrapper">
+            <p>原文作者: <a href="http://yoursite.com">Eric</a>
+            <p>原文链接: <a href="http://yoursite.com/2017/06/07/websocket/">http://yoursite.com/2017/06/07/websocket/</a>
+            <p>发表日期: <a href="http://yoursite.com/2017/06/07/websocket/">June 7th 2017, 5:24:30</a>
+            <p>版权声明: 本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2017/12/27/webpackAsync/" title= webpack异步加载原理 >
+                    <div class="nextTitle">webpack异步加载原理</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a>
-    </nav>
     
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" src= /avatar/avatar.png >
-    <div class="profile-name">Eric</div>
-    
-    <div class="profile-signature">
-        If you stack a monster and a monster, I ain&#39;t so bad.
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:ericy9707@foxmail.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/EricYeee" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/assets/wechat.png" />
-                </span>
-            
-        
-    
-        
-    
-        
-            
-                <a href="//weibo.com/p/1005055709928167/home" class="iconfont-archer weibo" target="_blank" title=weibo></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="//space.bilibili.com/11448910/" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //weibo.com/RobertDowneyJrCN?refer_flag=1001030201_&is_all=1 target="_black">RobertDowneyJr</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href= //weibo.com/u/6049590367?refer_flag=1001030201_ target="_black">局座召忠</a>
-                    </span>
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
@@ -842,6 +559,24 @@ Object
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebSocket"><span class="toc-number">1.</span> <span class="toc-text">WebSocket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要WebSocket？"><span class="toc-number">1.1.</span> <span class="toc-text">为什么需要WebSocket？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于WebSocket"><span class="toc-number">1.2.</span> <span class="toc-text">关于WebSocket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果使用WebSocket"><span class="toc-number">1.3.</span> <span class="toc-text">如果使用WebSocket?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket的构造函数"><span class="toc-number">1.3.1.</span> <span class="toc-text">WebSocket的构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-readyState"><span class="toc-number">1.3.2.</span> <span class="toc-text">WebSocket.readyState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onopen"><span class="toc-number">1.3.3.</span> <span class="toc-text">WebSocket.onopen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onclose"><span class="toc-number">1.3.4.</span> <span class="toc-text">WebSocket.onclose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onmessage"><span class="toc-number">1.3.5.</span> <span class="toc-text">WebSocket.onmessage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onerror"><span class="toc-number">1.3.6.</span> <span class="toc-text">WebSocket.onerror</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-binaryType"><span class="toc-number">1.3.7.</span> <span class="toc-text">WebSocket.binaryType</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webSocket-bufferedAmount"><span class="toc-number">1.3.8.</span> <span class="toc-text">webSocket.bufferedAmount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-send"><span class="toc-number">1.3.9.</span> <span class="toc-text">WebSocket.send()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-close"><span class="toc-number">1.3.10.</span> <span class="toc-text">WebSocket.close()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1804,6 +1539,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
