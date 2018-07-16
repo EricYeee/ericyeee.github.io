@@ -509,13 +509,17 @@ Flow是什么Flow是由Facebook出品的JavaScript静态类型检查工具。单
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/new/" >
+            <a class="abstract-title" href = "/2018/04/08/Call/" >
                 
-                    <span>深入理解new操作符</span>
+                    <span>Call,aplly与bind</span>
             </a>
             <div class="abstract-content">
-                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
-1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
+                详解call、apply和bind在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到接花移木的效果。
+call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。
+
+不传，或者传null,undefined， 函数中的 this 指向 window 对象
+传递另一个函数的函数名，函数中的 this 指向这个函数的引用
+传递字符串、数值或布尔类型等基础类型，函数中...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -536,17 +540,13 @@ Flow是什么Flow是由Facebook出品的JavaScript静态类型检查工具。单
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/08/Call/" >
+            <a class="abstract-title" href = "/2018/04/08/new/" >
                 
-                    <span>Call,aplly与bind</span>
+                    <span>深入理解new操作符</span>
             </a>
             <div class="abstract-content">
-                详解call、apply和bind在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到接花移木的效果。
-call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。
-
-不传，或者传null,undefined， 函数中的 this 指向 window 对象
-传递另一个函数的函数名，函数中的 this 指向这个函数的引用
-传递字符串、数值或布尔类型等基础类型，函数中...
+                深入理解new操作符在 JavaScript 中，万物皆对象，为什么还要通过 new 来产生对象？
+1234567891011121314151617181920function Animal(name)&#123;    this.name = name;&#125; Animal.color = "black"; Animal.prototype.say = function()&#123;    console.log("I'm " + this.name); &#125;; var cat = new Animal("cat");  console.log(     cat.na...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -598,13 +598,21 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/01/数组去重的方法/" >
+            <a class="abstract-title" href = "/2018/04/01/深浅拷贝/" >
                 
-                    <span>数组去重</span>
+                    <span>深浅拷贝</span>
             </a>
             <div class="abstract-content">
-                数组去重1.检测新数组中是否已存在12345678910function unArray(arr)&#123;    let newArr = [];    for(let i=0;i&lt;arr.length;i++)    &#123;        if(newArr.indexOf(arr[i]) == -1)&#123;            newArr.push(arr[i]);        &#125;    &#125;    return newArr;&#125;
-2.检测原数组中是否有重复12345678910function unArray(arr)&#12...
+                深浅拷贝ECMAScript中的变量类型分为两种：
+
+基本类型： undefined、null、Boolean、String、Number。
+引用类型： 统称为Object类型，细分为：Object、Array、Date、Function等。
+
+不同类型变量的存储方式基本数据类型基本数据类型保存在栈内存，形式如下：栈内存中分别存储着变量的标识符以及变量的值。
+
+引用数据类型引用类型 保存在 堆内存 中， 栈内存存储的是变量的标识符以及对象在堆内存中的存储地址，当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从对应的堆内存中取得所需的数据。 
+
+什么是深浅...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -1333,6 +1341,28 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-archive"> Total : 42 </div>
     
     <div class="post-archive">
@@ -1371,6 +1401,11 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/UDKjs(1)/" >你不知道的JavaScript读书笔记(1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2018/06/07/websocket/" >WebSocket学习笔记</a>
         </li>
     
     
@@ -1420,12 +1455,12 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
         </li>
     
     
@@ -1445,12 +1480,12 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
         </li>
     
     
@@ -1490,12 +1525,12 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/src与href/" >src与href的区别</a>
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/typesOfJs/" >JS中的数据类型与操作符</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/typesOfJs/" >JS中的数据类型与操作符</a>
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/src与href/" >src与href的区别</a>
         </li>
     
     
@@ -1530,12 +1565,12 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
         </li>
     
     
@@ -1557,11 +1592,6 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
             <span class="archive-post-date">12/27</span><a class="archive-post-title" href= "/2017/12/27/webpackAsync/" >webpack异步加载原理</a>
         </li>
     
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2017/06/07/websocket/" >WebSocket学习笔记</a>
-        </li>
-    
     </div>
   </div>
         <div class="sidebar-panel-tags">
@@ -1571,33 +1601,35 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
-    
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
-        <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
-    
-        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
     
         <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
-        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
+        <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
     
-        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
+    
+        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
-        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
     
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
     
         <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
     
         <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
     
@@ -1605,11 +1637,9 @@ call该方法可以传递一个thisArgs参数和一个参数列表，thisArgs �
     
         <span class="sidebar-tag-name" data-tags="Scss"><span class="iconfont-archer">&#xe606;</span>Scss</span>
     
-        <span class="sidebar-tag-name" data-tags="WebSocket"><span class="iconfont-archer">&#xe606;</span>WebSocket</span>
-    
         <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
     
-        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
+        <span class="sidebar-tag-name" data-tags="WebSocket"><span class="iconfont-archer">&#xe606;</span>WebSocket</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

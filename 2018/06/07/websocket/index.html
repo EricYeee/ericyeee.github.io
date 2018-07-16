@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>src与href的区别 · EricYeee&#39;s documents</title>
+    <title>WebSocket学习笔记 · EricYeee&#39;s documents</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -207,7 +207,7 @@
                 <a href="/" >EricYeee&#39;s documents</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">src与href的区别</a>
+                <a href="#" class="post-name">WebSocket学习笔记</a>
             </div>
     </div>
     
@@ -239,7 +239,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            src与href的区别
+            WebSocket学习笔记
             <!-- 404 -->
             
         </h1>
@@ -258,18 +258,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "HTML">HTML</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "WebSocket">WebSocket</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count">298</span> / Reading time: <span class="post-count">1 min</span></span>
+                        <span>Word count: <span class="post-count">926</span> / Reading time: <span class="post-count">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/02/15</span>
+                    <span class="post-intro-time">2018/06/07</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -392,17 +392,59 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="src与href"><a href="#src与href" class="headerlink" title="src与href"></a>src与href</h1><p>我们在平常在使用<code>a</code>标签和<code>img</code>标签时都知道应该分别使用<code>href</code>属性与<code>src</code>属性，但是这两者的作用看起来如此相近，为什么还要做出区别呢？</p>
-<h2 id="href"><a href="#href" class="headerlink" title="href"></a>href</h2><p>诸如<code>link</code>标签与<code>a</code>标签等，使用的属性都是<code>href</code>属性。<code>href</code>属性的作用是：<strong>在指定的资源和当前元素之间建立连接（并不是要立即使用）</strong>。所以当浏览器从上到下解析文档时，并不会因为遇到<code>href</code>属性而阻塞进程。（而是例如开出一个新的工作线程去下载<code>css</code>文件）</p>
-<h2 id="src"><a href="#src" class="headerlink" title="src"></a>src</h2><p>而例如<code>img</code>与<code>script</code>元素等众多<strong>替换元素</strong>使用的都为<code>src</code>属性。<code>src</code>属性的全称为<code>source</code>（资源），表示的是<strong>引用资源，然后替换该元素</strong>（所以具有<code>src</code>属性的元素都为替换元素）。所以在加载具有<code>src</code>属性的元素时，将会造成进程的阻塞，停止解析文档，转而加载链接到的资源。这也是为什么说我们通常要把<code>script</code>标签放在<code>body</code>元素的末尾的原因（防止因为脚本而阻塞文档解析）。</p>
+        <h1 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h1><p><code>WebSocket</code>是一种网络通信协议，它位于应用层当中。</p>
+<h2 id="为什么需要WebSocket？"><a href="#为什么需要WebSocket？" class="headerlink" title="为什么需要WebSocket？"></a>为什么需要WebSocket？</h2><p>要说为什么要使用<code>WebSocket</code>，我们需要先了解同为应用层协议的HTTP的缺点：</p>
+<ul>
+<li>它是单向的；</li>
+<li>它是无状态的；</li>
+<li>它是无连接的；</li>
+<li>……</li>
+</ul>
+<p>这样造成的问题就是：如果我们想要写一个拥有聊天室功能或者股票实时查看功能的软件时候，我们<strong>经常需要对服务器进行轮询</strong> ，否则没办法及时地获得更新。但是轮询的效率非常低，并且浪费资源（轮询会加重客户端的负担，长轮询对服务器的并行处理能力要求高）。因此<code>WebSocket</code>应运而生。</p>
+<h2 id="关于WebSocket"><a href="#关于WebSocket" class="headerlink" title="关于WebSocket"></a>关于WebSocket</h2><p><code>Websocket</code>最大的特点就是服务器可以主动地向客户端推送信息，是真正的双向平等对话：<img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png" alt="img"> </p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051503.jpg" alt="img"> </p>
+<h2 id="如果使用WebSocket"><a href="#如果使用WebSocket" class="headerlink" title="如果使用WebSocket?"></a>如果使用WebSocket?</h2><p>以下是一个客户端使用<code>WebSocket</code>的完整示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">"wss://echo.websocket.org"</span>);</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection open ..."</span>); </span><br><span class="line">  ws.send(<span class="string">"Hello WebSockets!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"Received Message: "</span> + evt.data);</span><br><span class="line">  ws.close();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection closed."</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket的构造函数"><a href="#WebSocket的构造函数" class="headerlink" title="WebSocket的构造函数"></a>WebSocket的构造函数</h3><p>我们可以使用<code>WebSocket</code>的构造函数生成一个实例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:8080'</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>在该实例生成时</strong>，客户端就会与服务器进行连接。</p>
+<h3 id="WebSocket-readyState"><a href="#WebSocket-readyState" class="headerlink" title="WebSocket.readyState"></a>WebSocket.readyState</h3><p><code>readyState</code> 是<code>WebSocket</code>的一个属性，它一共有以下四种取值：</p>
+<ul>
+<li>CONNECTING：值为0，表示正在连接；</li>
+<li>OPEN：值为1，表示已经连接，可以进行通信了；</li>
+<li>CLOSING：值为2，表示连接正在关闭；</li>
+<li>CLOSED：值为3，表示连接已经关闭，<strong>或者打开连接失败</strong>；</li>
+</ul>
+<h3 id="WebSocket-onopen"><a href="#WebSocket-onopen" class="headerlink" title="WebSocket.onopen"></a>WebSocket.onopen</h3><p>实例对象中的<code>onopen</code> 属性（注意是小写），值为连接成功后的回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  ws.send(<span class="string">'Hello Server!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>不过如果我们想要指定多个回调函数，就要使用<code>addEventListener</code>方法</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.addEventListener(<span class="string">'open'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    ws.send(<span class="string">'Hello Server!'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-onclose"><a href="#WebSocket-onclose" class="headerlink" title="WebSocket.onclose"></a>WebSocket.onclose</h3><p>实例对象中的<code>onclose</code> 属性，值为连接关闭后的回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> code = event.code;</span><br><span class="line">  <span class="keyword">var</span> reason = event.reason;</span><br><span class="line">  <span class="keyword">var</span> wasClean = event.wasClean;</span><br><span class="line">  <span class="comment">// handle close event</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.addEventListener(<span class="string">"close"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> code = event.code;</span><br><span class="line">  <span class="keyword">var</span> reason = event.reason;</span><br><span class="line">  <span class="keyword">var</span> wasClean = event.wasClean;</span><br><span class="line">  <span class="comment">// handle close event</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-onmessage"><a href="#WebSocket-onmessage" class="headerlink" title="WebSocket.onmessage"></a>WebSocket.onmessage</h3><p>实例对象中的<code>onmessage</code> 属性，值为收到服务器发送的数据后的回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data;</span><br><span class="line">  <span class="comment">// 处理数据</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.addEventListener(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data;</span><br><span class="line">  <span class="comment">// 处理数据</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-onerror"><a href="#WebSocket-onerror" class="headerlink" title="WebSocket.onerror"></a>WebSocket.onerror</h3><p>实例对象的<code>onerror</code>属性，用于指定报错时的回调函数。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">socket.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.addEventListener(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-binaryType"><a href="#WebSocket-binaryType" class="headerlink" title="WebSocket.binaryType"></a>WebSocket.binaryType</h3><p>我们可以使用实例对象中的<code>binaryType</code>属性来实现手动指定收到的<strong>二进制数据类型</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 收到的是 blob 数据</span></span><br><span class="line">ws.binaryType = <span class="string">"blob"</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.data.size);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 收到的是 ArrayBuffer 数据</span></span><br><span class="line">ws.binaryType = <span class="string">"arraybuffer"</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.data.byteLength);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="webSocket-bufferedAmount"><a href="#webSocket-bufferedAmount" class="headerlink" title="webSocket.bufferedAmount"></a>webSocket.bufferedAmount</h3><p>该属性用于表示还有多少字节的二进制数据没有发送出去。可以利用它来判断是否发送结束。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">10000000</span>);</span><br><span class="line">ws.send(data);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (ws.bufferedAmount === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// 发送完毕</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 发送还没结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-send"><a href="#WebSocket-send" class="headerlink" title="WebSocket.send()"></a>WebSocket.send()</h3><p>实例对象的<code>send()</code>方法用于向服务器发送数据。 </p>
+<p>发送文本的例子。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws.send(<span class="string">'your message'</span>);</span><br></pre></td></tr></table></figure>
+<p>发送 Blob 对象的例子。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span></span><br><span class="line">  .querySelector(<span class="string">'input[type="file"]'</span>)</span><br><span class="line">  .files[<span class="number">0</span>];</span><br><span class="line">ws.send(file);</span><br></pre></td></tr></table></figure>
+<h3 id="WebSocket-close"><a href="#WebSocket-close" class="headerlink" title="WebSocket.close()"></a>WebSocket.close()</h3><p>实例对象的<code>close()</code>方法用于客户端手动关闭连接。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws.close();</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html" target="_blank" rel="noopener">WebSocket教程</a>；</p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者: <a href="https://ericyeee.github.io">Eric</a>
-            <p>原文链接: <a href="https://ericyeee.github.io/2018/02/15/src与href/">https://ericyeee.github.io/2018/02/15/src与href/</a>
-            <p>发表日期: <a href="https://ericyeee.github.io/2018/02/15/src与href/">February 15th 2018, 8:33:30</a>
+            <p>原文链接: <a href="https://ericyeee.github.io/2018/06/07/websocket/">https://ericyeee.github.io/2018/06/07/websocket/</a>
+            <p>发表日期: <a href="https://ericyeee.github.io/2018/06/07/websocket/">June 7th 2018, 5:24:30</a>
             <p>版权声明: 本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -411,16 +453,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/03/07/ES6/" title= ES6学习笔记 >
-                    <div class="nextTitle">ES6学习笔记</div>
+                <a href= "/2018/06/17/UDKjs(1)/" title= 你不知道的JavaScript读书笔记(1) >
+                    <div class="nextTitle">你不知道的JavaScript读书笔记(1)</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/02/15/typesOfJs/" title= JS中的数据类型与操作符 >
-                    <div class="prevTitle">JS中的数据类型与操作符</div>
+                <a href= "/2018/05/30/rem/" title= 利用rem进行适配 >
+                    <div class="prevTitle">利用rem进行适配</div>
                 </a>
             
         </li>
@@ -538,7 +580,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#src与href"><span class="toc-number">1.</span> <span class="toc-text">src与href</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#href"><span class="toc-number">1.1.</span> <span class="toc-text">href</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#src"><span class="toc-number">1.2.</span> <span class="toc-text">src</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebSocket"><span class="toc-number">1.</span> <span class="toc-text">WebSocket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要WebSocket？"><span class="toc-number">1.1.</span> <span class="toc-text">为什么需要WebSocket？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于WebSocket"><span class="toc-number">1.2.</span> <span class="toc-text">关于WebSocket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果使用WebSocket"><span class="toc-number">1.3.</span> <span class="toc-text">如果使用WebSocket?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket的构造函数"><span class="toc-number">1.3.1.</span> <span class="toc-text">WebSocket的构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-readyState"><span class="toc-number">1.3.2.</span> <span class="toc-text">WebSocket.readyState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onopen"><span class="toc-number">1.3.3.</span> <span class="toc-text">WebSocket.onopen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onclose"><span class="toc-number">1.3.4.</span> <span class="toc-text">WebSocket.onclose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onmessage"><span class="toc-number">1.3.5.</span> <span class="toc-text">WebSocket.onmessage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-onerror"><span class="toc-number">1.3.6.</span> <span class="toc-text">WebSocket.onerror</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-binaryType"><span class="toc-number">1.3.7.</span> <span class="toc-text">WebSocket.binaryType</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webSocket-bufferedAmount"><span class="toc-number">1.3.8.</span> <span class="toc-text">webSocket.bufferedAmount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-send"><span class="toc-number">1.3.9.</span> <span class="toc-text">WebSocket.send()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-close"><span class="toc-number">1.3.10.</span> <span class="toc-text">WebSocket.close()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

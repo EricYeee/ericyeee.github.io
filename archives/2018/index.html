@@ -509,17 +509,49 @@ Flow是什么Flow是由Facebook出品的JavaScript静态类型检查工具。单
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/30/meta/" >
+            <a class="abstract-title" href = "/2018/06/07/websocket/" >
                 
-                    <span>HTML中的meta标签</span>
+                    <span>WebSocket学习笔记</span>
             </a>
             <div class="abstract-content">
-                HTML中的meta标签简介元数据是用于描述数据的数据，也就是metadata 。它不会显示在页面上，但是机器却可以识别它。
-作用meta 常常用于定义页面的说明、关键字、最后修改日期以及其他元数据。这些元数据将服务于浏览器、搜索引擎和其他网络服务。
-组成meta标签一共有两个属性，分别是http-equiv以及name属性。
-name属性name属性的主要作用是描述网页的相关信息，比如网页的关键词、叙述等。与之对应的属性值为content ，它之中的内容是对name填入类型的具体描述，有利于搜索引擎抓取。
-meta标签中name属性语法格式是： 
-1&lt;meta name="参数"...
+                WebSocketWebSocket是一种网络通信协议，它位于应用层当中。
+为什么需要WebSocket？要说为什么要使用WebSocket，我们需要先了解同为应用层协议的HTTP的缺点：
+
+它是单向的；
+它是无状态的；
+它是无连接的；
+……
+
+这样造成的问题就是：如果我们想要写一个拥有聊天室功能或者股票实时查看功能的软件时候，我们经常需要对服务器进行轮询 ，否则没办法及时地获得更新。但是轮询的效率非常低，并且浪费资源（轮询会加重客户端的负担，长轮询对服务器的并行处理能力要求高）。因此WebSocket应运而生。
+关于WebSocketWebsocket最大的特点就是服务器可以主动地向客...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/07</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "WebSocket">WebSocket</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/05/30/rem/" >
+                
+                    <span>利用rem进行适配</span>
+            </a>
+            <div class="abstract-content">
+                利用rem进行适配rem作为一个长度单位，可以使得前端开发者很方便地在各种屏幕尺寸下，通过等比缩放的方式来适配。
+定义rem的官方定义为The font size of the root element ，即为根节点的字体大小。一般认为网页中的根节点是html元素，所以采用的方式也是通过设置html元素的font-size来做屏幕是配的。
+基础解决方案123456789101112131415161718(function(doc, win) &#123;    //获取当前文档元素    var docEl = doc.documentElement,        //判断是否有旋转...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -540,14 +572,17 @@ meta标签中name属性语法格式是：
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/30/rem/" >
+            <a class="abstract-title" href = "/2018/05/30/meta/" >
                 
-                    <span>利用rem进行适配</span>
+                    <span>HTML中的meta标签</span>
             </a>
             <div class="abstract-content">
-                利用rem进行适配rem作为一个长度单位，可以使得前端开发者很方便地在各种屏幕尺寸下，通过等比缩放的方式来适配。
-定义rem的官方定义为The font size of the root element ，即为根节点的字体大小。一般认为网页中的根节点是html元素，所以采用的方式也是通过设置html元素的font-size来做屏幕是配的。
-基础解决方案123456789101112131415161718(function(doc, win) &#123;    //获取当前文档元素    var docEl = doc.documentElement,        //判断是否有旋转...
+                HTML中的meta标签简介元数据是用于描述数据的数据，也就是metadata 。它不会显示在页面上，但是机器却可以识别它。
+作用meta 常常用于定义页面的说明、关键字、最后修改日期以及其他元数据。这些元数据将服务于浏览器、搜索引擎和其他网络服务。
+组成meta标签一共有两个属性，分别是http-equiv以及name属性。
+name属性name属性的主要作用是描述网页的相关信息，比如网页的关键词、叙述等。与之对应的属性值为content ，它之中的内容是对name填入类型的具体描述，有利于搜索引擎抓取。
+meta标签中name属性语法格式是： 
+1&lt;meta name="参数"...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -597,43 +632,10 @@ meta标签中name属性语法格式是：
             </div>
         </article>
     
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/21/mongoose/" >
-                
-                    <span>Mongoose入门指南</span>
-            </a>
-            <div class="abstract-content">
-                Mongoose入门指南安装当你已经安装了MongoDB和Node.js之后，你就可以安装mongoose ：
-1$ npm install mongoose
-连接第一步我们需要做的，就是在项目中引入mongoose，并且代替使用MongoDB来连接到需要操作的数据库：
-12var mongoose = require('mongoose');mongoose.connect('mongodb://localhost/test');
-当以上代码生效时，我们将会有一个持续链接本地数据库的连接，我们可以对其进行监听：
-12345var db = mongoose.connection;db....
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/21</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NodeJS">NodeJS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "MongoDB">MongoDB</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><a class="page-number" href="/archives/2018/page/4/">4</a><a class="extend next" rel="next" href="/archives/2018/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/5/">5</a><a class="extend next" rel="next" href="/archives/2018/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1341,6 +1343,28 @@ meta标签中name属性语法格式是：
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-archive"> Total : 42 </div>
     
     <div class="post-archive">
@@ -1379,6 +1403,11 @@ meta标签中name属性语法格式是：
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/UDKjs(1)/" >你不知道的JavaScript读书笔记(1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2018/06/07/websocket/" >WebSocket学习笔记</a>
         </li>
     
     
@@ -1428,12 +1457,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/new/" >深入理解new操作符</a>
         </li>
     
     
@@ -1453,12 +1482,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
         </li>
     
     
@@ -1498,12 +1527,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/src与href/" >src与href的区别</a>
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/typesOfJs/" >JS中的数据类型与操作符</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/typesOfJs/" >JS中的数据类型与操作符</a>
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/src与href/" >src与href的区别</a>
         </li>
     
     
@@ -1538,12 +1567,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
         </li>
     
     
@@ -1565,11 +1594,6 @@ meta标签中name属性语法格式是：
             <span class="archive-post-date">12/27</span><a class="archive-post-title" href= "/2017/12/27/webpackAsync/" >webpack异步加载原理</a>
         </li>
     
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2017/06/07/websocket/" >WebSocket学习笔记</a>
-        </li>
-    
     </div>
   </div>
         <div class="sidebar-panel-tags">
@@ -1579,33 +1603,35 @@ meta标签中name属性语法格式是：
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
-    
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
-        <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
-    
-        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
+        <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
     
         <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
     
         <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
-        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
+        <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
     
-        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
+    
+        <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
         <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
-        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
+        <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
     
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
     
         <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
     
         <span class="sidebar-tag-name" data-tags="Less"><span class="iconfont-archer">&#xe606;</span>Less</span>
     
@@ -1613,11 +1639,9 @@ meta标签中name属性语法格式是：
     
         <span class="sidebar-tag-name" data-tags="Scss"><span class="iconfont-archer">&#xe606;</span>Scss</span>
     
-        <span class="sidebar-tag-name" data-tags="WebSocket"><span class="iconfont-archer">&#xe606;</span>WebSocket</span>
-    
         <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
     
-        <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
+        <span class="sidebar-tag-name" data-tags="WebSocket"><span class="iconfont-archer">&#xe606;</span>WebSocket</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
