@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>EricYeee&#39;s documents</title>
+    <title>Web Worker学习笔记 · EricYeee&#39;s documents</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -70,6 +70,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180524 as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= /css/mobile.css?v=20180524 media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -191,12 +193,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >EricYeee&#39;s documents</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Web Worker学习笔记</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>EricYeee's documents</a>
 </header>
@@ -210,24 +223,76 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            Web Worker学习笔记
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "HTML">HTML</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count">1,520</span> / Reading time: <span class="post-count">6 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/04/17</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -327,96 +392,98 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Web-Worker学习笔记"><a href="#Web-Worker学习笔记" class="headerlink" title="Web Worker学习笔记"></a>Web Worker学习笔记</h1><p> 众所周知，<code>JavaScript</code>是一门<strong>单线程语言</strong>，所有任务只能在一个线程上完成。但是随着多核CPU的出现，它不能够很好地利用电脑的性能。</p>
+<p><code>Web Worker</code>的作用就是为<code>JavaScript</code>创造多线程环境，允许<strong>主线程</strong>创建<code>Worker</code>线程，两个互不干扰，等到<code>Worker</code>线程完成计算任务之后再把结果返回给主线程（<strong>注意：与异步操作不同，它并不会阻塞！</strong>）。</p>
+<p><code>Worker</code>线程一旦新建成功就会始终运行，不会被主线程上的活动（比如点击按钮或者提交表单等）打断。这样有利于随时响应主线程的通信，但是这也造成了对资源的消耗，不应该过渡使用。</p>
+<h2 id="Web-Worker的限制"><a href="#Web-Worker的限制" class="headerlink" title="Web Worker的限制"></a>Web Worker的限制</h2><p><code>Web Worker</code>具有以下一些需要注意的地方：</p>
+<ul>
+<li><strong>同源限制</strong>：分配给 <code>Worker</code> 线程运行的脚本文件，必须与主线程的脚本文件同源。；</li>
+<li><strong>DOM限制</strong>：<code>Worker</code> 线程所在的全局对象，与主线程不一样，无法读取主线程所在网页的 DOM 对象，也无法使用<code>document</code>、<code>window</code>、<code>parent</code>这些对象。但是，<code>Worker</code> 线程可以访问<code>navigator</code>对象和<code>location</code>对象。 </li>
+<li><strong>通信联系</strong>：<code>Worker</code> 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。 </li>
+<li><strong>脚本限制</strong>：<code>Worker</code> 线程不能执行<code>alert()</code>方法和<code>confirm()</code>方法，但可以使用 <code>XMLHttpRequest</code> 对象发出 <code>AJAX</code> 请求。 </li>
+<li><strong>文本限制</strong>：<code>Worker</code> 线程无法读取本地文件，即不能打开本机的文件系统（<code>file://</code>），它所加载的脚本，必须来自网络。 </li>
+</ul>
+<h2 id="Web-Worker的基本用法"><a href="#Web-Worker的基本用法" class="headerlink" title="Web Worker的基本用法"></a>Web Worker的基本用法</h2><h3 id="主线程"><a href="#主线程" class="headerlink" title="主线程"></a>主线程</h3><p>主线程采用<code>new</code>命令来调用<code>Worker()</code>构造函数，新建一个<code>Worker</code>线程：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string">'work.js'</span>);</span><br></pre></td></tr></table></figure>
+<p>该构造函数的参数是一个<strong>脚本文件</strong> （由于<code>Worker</code>不能读取本地文件，所以这个脚本必须来自网络）。</p>
+<p>然后主线程可以调用<code>worker.postMessage()</code> 方法向<code>Worker</code>发送消息：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">worker.postMessage(<span class="string">'Hello World'</span>);</span><br><span class="line">worker.postMessage(&#123;<span class="attr">method</span>: <span class="string">'echo'</span>, <span class="attr">args</span>: [<span class="string">'Work'</span>]&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个方法的参数就是主线程传给<code>Worker</code>的数据。<strong>它可以是各种数据类型，包括二进制数据</strong>。</p>
+<p>同时，主线程可以通过<code>worker.onmessage</code>指定监听函数，接收子线程发送回来的消息：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">worker.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//获取接收到的消息</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Received message '</span> + event.data);</span><br><span class="line">  doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行任务</span></span><br><span class="line">  worker.postMessage(<span class="string">'Work done!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>Worker</code>完成任务之后，我们可以主动地关闭线程：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker.terminate();</span><br></pre></td></tr></table></figure>
+<h3 id="Worker线程"><a href="#Worker线程" class="headerlink" title="Worker线程"></a>Worker线程</h3><p><code>Worker</code>线程内部需要有一个监听函数，监听<code>message</code>事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  self.postMessage(<span class="string">'You said: '</span> + e.data);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<p>可以使用<code>self.postMessage()</code> 方法来向主线程发送消息：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = e.data;</span><br><span class="line">  <span class="keyword">switch</span> (data.cmd) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'start'</span>:</span><br><span class="line">      self.postMessage(<span class="string">'WORKER STARTED: '</span> + data.msg);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'stop'</span>:</span><br><span class="line">      self.postMessage(<span class="string">'WORKER STOPPED: '</span> + data.msg);</span><br><span class="line">      self.close(); <span class="comment">// Terminates the worker.</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      self.postMessage(<span class="string">'Unknown command: '</span> + data.msg);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，<code>self.close()</code>用于在<code>Worker</code>内部关闭自身。</p>
+<h3 id="Worker加载脚本"><a href="#Worker加载脚本" class="headerlink" title="Worker加载脚本"></a>Worker加载脚本</h3><p><code>Worker</code> 内部如果要加载其他脚本，有一个专门的方法<code>importScripts()</code>。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">importScripts(<span class="string">'script1.js'</span>, <span class="string">'script2.js'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>主线程可以监听 <code>Worker</code> 是否发生错误。如果发生错误，<code>Worker</code> 会触发主线程的<code>error</code>事件。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">worker.onerror(<span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log([</span><br><span class="line">    <span class="string">'ERROR: Line '</span>, e.lineno, <span class="string">' in '</span>, e.filename, <span class="string">': '</span>, e.message</span><br><span class="line">  ].join(<span class="string">''</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">worker.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：<code>Worker</code> 内部也可以监听<code>error</code>事件。 </p>
+<h3 id="数据通信"><a href="#数据通信" class="headerlink" title="数据通信"></a>数据通信</h3><p>前文说过的，主线程与<code>Worker</code>之间的通信内容，可以是文本也可以是对象。<strong>需要注意的是，这种通信是拷贝关系，即是传值而不是传址</strong>，<code>Worker</code>对通信内容的修改不会影响到主线程。</p>
+<p>但是，拷贝方式发送二进制数据，会造成性能问题。比如，主线程向 <code>Worker</code> 发送一个 500MB 文件，<strong>默认情况下浏览器会生成一个原文件的拷贝</strong>。 为了解决这个问题，<code>JavaScript</code> 允许主线程把二进制数据直接转移给子线程，<strong>但是一旦转移，主线程就无法再使用这些二进制数据了</strong>，这是为了防止出现多个线程同时修改数据的麻烦局面。</p>
+<p>如果要直接转移数据的控制权，就要使用下面的写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Transferable Objects 格式</span></span><br><span class="line">worker.postMessage(arrayBuffer, [arrayBuffer]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">var</span> ab = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">1</span>);</span><br><span class="line">worker.postMessage(ab, [ab]);</span><br></pre></td></tr></table></figure>
+<h3 id="同页面的Web-Worker"><a href="#同页面的Web-Worker" class="headerlink" title="同页面的Web Worker"></a>同页面的Web Worker</h3><p>通常情况下，<code>Worker</code>载入的是一个单独的<code>JavaScript</code>脚本文件，但是也可以载入与主线程在同一个网页的代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"worker"</span> <span class="attr">type</span>=<span class="string">"app/worker"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        postMessage(<span class="string">'some message'</span>);</span></span><br><span class="line"><span class="javascript">      &#125;, <span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面是一段嵌入网页的脚本，<strong>注意必须指定<code>&lt;script&gt;</code>标签的<code>type</code>属性为<code>app/worker</code></strong> 。</p>
+<p>然后，读取这一段嵌入页面的脚本，用 <code>Worker</code> 来处理。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建一个Blob对象</span></span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([<span class="built_in">document</span>.querySelector(<span class="string">'#worker'</span>).textContent]);</span><br><span class="line"><span class="comment">//为该Blob对象生成一个URL</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">window</span>.URL.createObjectURL(blob);</span><br><span class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(url);</span><br><span class="line"></span><br><span class="line">worker.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// e.data === 'some message'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Worker线程完成轮询"><a href="#Worker线程完成轮询" class="headerlink" title="Worker线程完成轮询"></a>Worker线程完成轮询</h3><p>有时，浏览器需要轮询服务器状态，以便第一时间得知状态改变。这个工作可以放在 <code>Worker</code> 里面。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWorker</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([<span class="string">'('</span> + f.toString() +<span class="string">')()'</span>]);</span><br><span class="line">  <span class="keyword">var</span> url = <span class="built_in">window</span>.URL.createObjectURL(blob);</span><br><span class="line">  <span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(url);</span><br><span class="line">  <span class="keyword">return</span> worker;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pollingWorker = createWorker(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cache;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">new, old</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">  setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    fetch(<span class="string">'/my-api-endpoint'</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> data = res.json();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!compare(data, cache)) &#123;</span><br><span class="line">        cache = data;</span><br><span class="line">        self.postMessage(data);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pollingWorker.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// render data</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pollingWorker.postMessage(<span class="string">'init'</span>);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，<code>Worker</code> 每秒钟轮询一次数据，然后跟缓存做比较。如果不一致，就说明服务端有了新的变化，因此就要通知主线程。 </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>本篇文章参考了以下博文：</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2018/07/web-worker.html" target="_blank" rel="noopener">Web Worker 使用教程</a></li>
+</ul>
+
+    </article>
+    <!-- license  -->
     
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/07/10/手动实现一个bind函数/" >
-                
-                    <span>手动实现一个bind函数</span>
-            </a>
-            <div class="abstract-content">
-                手动实现一个bind函数我们通常使用的bind的函数原理是什么呢？应该如何实现呢？这次我们就来模拟一下bind函数实现。
-①能够修改this绑定值的mbind1函数大家都知道bind函数的作用，我们首先来完成实现this值绑定的mbind1函数。
-先看看bind函数的绑定this值得功能:
-12345678let foo = &#123;    value: 1&#125;;function bar() &#123;    console.log(this.value);&#125;let baz = bar.bind(foo);baz();	//1
-想要实现bind函数，我们首先想到的...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/10</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/07/05/UDKjs(4)/" >
-                
-                    <span>你不知道的JavaScript读书笔记(4)</span>
-            </a>
-            <div class="abstract-content">
-                你不知道的JavaScript读书笔记(4)原型在JavaScript中每个构造函数（其实是每个函数）都有一个prototype属性指向它的原型。而每个实例的__proto__属性都会指向它的构造函数的prototype ：
-12345function Test() &#123;    this.num = 2;&#125;let test1 = new Test();console.log(test1.__proto__ === Test.prototype); //true
-属性设置和屏蔽给一个对象设置属性并不仅仅是添加一个新属性或者修改已有的属性值。例如：
-1myObject.fo...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/05</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/07/02/用Flow进行静态类型检查/" >
-                
-                    <span>用Flow进行静态类型检查</span>
-            </a>
-            <div class="abstract-content">
-                用Flow进行静态类型检查为什么要静态类型检查JavaScript是一门非常灵活的弱类型语言，这是它的优点也是它的缺点。在声明变量之后通常可以随意更改该变量的数据类型，因此常常会导致出现那些在编译阶段没有报错，但是在执行时发生各种各样奇怪现象的BUG 。这时候就需要引入类型检查，使得在代码编译阶段就能发现隐患 。同时为了不影响代码运行时的性能，相比动态类型检查，我们更愿意选择静态类型检查。而Flow就是一个很好的选择。
-Flow是什么Flow是由Facebook出品的JavaScript静态类型检查工具。单论类型检查，我们还可以选择TypeScript，但是对于一个需要添加添加静态类型检...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/02</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
-    
-</div>
-                
-            </div>
-        </article>
+        <div class="license-wrapper">
+            <p>原文作者: <a href="https://ericyeee.github.io">Eric</a>
+            <p>原文链接: <a href="https://ericyeee.github.io/2018/04/17/web-worker/">https://ericyeee.github.io/2018/04/17/web-worker/</a>
+            <p>发表日期: <a href="https://ericyeee.github.io/2018/04/17/web-worker/">April 17th 2018, 8:30:15</a>
+            <p>版权声明: 本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/05/12/MongoDB/" title= MongoDB基础 >
+                    <div class="nextTitle">MongoDB基础</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/04/08/new/" title= 深入理解new操作符 >
+                    <div class="prevTitle">深入理解new操作符</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -501,6 +568,24 @@ Flow是什么Flow是由Facebook出品的JavaScript静态类型检查工具。单
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web-Worker学习笔记"><span class="toc-number">1.</span> <span class="toc-text">Web Worker学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-Worker的限制"><span class="toc-number">1.1.</span> <span class="toc-text">Web Worker的限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-Worker的基本用法"><span class="toc-number">1.2.</span> <span class="toc-text">Web Worker的基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主线程"><span class="toc-number">1.2.1.</span> <span class="toc-text">主线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Worker线程"><span class="toc-number">1.2.2.</span> <span class="toc-text">Worker线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Worker加载脚本"><span class="toc-number">1.2.3.</span> <span class="toc-text">Worker加载脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误处理"><span class="toc-number">1.2.4.</span> <span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据通信"><span class="toc-number">1.2.5.</span> <span class="toc-text">数据通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同页面的Web-Worker"><span class="toc-number">1.2.6.</span> <span class="toc-text">同页面的Web Worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Worker线程完成轮询"><span class="toc-number">1.2.7.</span> <span class="toc-text">Worker线程完成轮询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1475,6 +1560,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>

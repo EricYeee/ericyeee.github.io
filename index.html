@@ -347,6 +347,36 @@ height:50vh;
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/07/10/手动实现一个bind函数/" >
+                
+                    <span>手动实现一个bind函数</span>
+            </a>
+            <div class="abstract-content">
+                手动实现一个bind函数我们通常使用的bind的函数原理是什么呢？应该如何实现呢？这次我们就来模拟一下bind函数实现。
+①能够修改this绑定值的mbind1函数大家都知道bind函数的作用，我们首先来完成实现this值绑定的mbind1函数。
+先看看bind函数的绑定this值得功能:
+12345678let foo = &#123;    value: 1&#125;;function bar() &#123;    console.log(this.value);&#125;let baz = bar.bind(foo);baz();	//1
+想要实现bind函数，我们首先想到的...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/10</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/07/05/UDKjs(4)/" >
                 
                     <span>你不知道的JavaScript读书笔记(4)</span>
@@ -559,34 +589,6 @@ Flow是什么Flow是由Facebook出品的JavaScript静态类型检查工具。单
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/30/rem/" >
-                
-                    <span>利用rem进行适配</span>
-            </a>
-            <div class="abstract-content">
-                利用rem进行适配rem作为一个长度单位，可以使得前端开发者很方便地在各种屏幕尺寸下，通过等比缩放的方式来适配。
-定义rem的官方定义为The font size of the root element ，即为根节点的字体大小。一般认为网页中的根节点是html元素，所以采用的方式也是通过设置html元素的font-size来做屏幕是配的。
-基础解决方案123456789101112131415161718(function(doc, win) &#123;    //获取当前文档元素    var docEl = doc.documentElement,        //判断是否有旋转...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/30</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "HTML">HTML</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
             <a class="abstract-title" href = "/2018/05/30/meta/" >
                 
                     <span>HTML中的meta标签</span>
@@ -618,29 +620,25 @@ meta标签中name属性语法格式是：
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/27/webpack/" >
+            <a class="abstract-title" href = "/2018/05/30/rem/" >
                 
-                    <span>深入浅出webpack学习笔记</span>
+                    <span>利用rem进行适配</span>
             </a>
             <div class="abstract-content">
-                深入浅出webpack学习笔记Webpack 凭借强大的功能与良好的使用体验，已经成为目前最流行，社区最活跃的打包工具，是现代 Web 开发必须掌握的技能之一。
-为什么要使用构建工具构建工具中的构建 其实是工程化、自动化思想在前端开发中的体现，让代码自动化地执行这一系列复杂的流程。它包括以下内容：
-
-代码转换：将TypeScript编译为JavaScript，将SCSS编译为CSS等；
-文件优化：压缩JavaScript、CSS、HTML代码，压缩合并图片等；
-代码分割：提取多个页面的公共代码、提取首屏不需要执行的部分代码让其异步加载；
-模块合并：在采用模块化的项目里会有很多个模块和文件...
+                利用rem进行适配rem作为一个长度单位，可以使得前端开发者很方便地在各种屏幕尺寸下，通过等比缩放的方式来适配。
+定义rem的官方定义为The font size of the root element ，即为根节点的字体大小。一般认为网页中的根节点是html元素，所以采用的方式也是通过设置html元素的font-size来做屏幕是配的。
+基础解决方案123456789101112131415161718(function(doc, win) &#123;    //获取当前文档元素    var docEl = doc.documentElement,        //判断是否有旋转...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/27</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/30</span>
                 </div>
                 <!-- tags  -->
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "HTML">HTML</a>
     
 </div>
                 
@@ -1455,27 +1453,7 @@ meta标签中name属性语法格式是：
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-archive"> Total : 42 </div>
+    <div class="total-archive"> Total : 44 </div>
     
     <div class="post-archive">
     
@@ -1484,6 +1462,11 @@ meta标签中name属性语法格式是：
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/手动实现一个bind函数/" >手动实现一个bind函数</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1567,6 +1550,11 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2018/04/17/web-worker/" >Web Worker学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/Call/" >Call,aplly与bind</a>
         </li>
     
@@ -1592,12 +1580,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/深浅拷贝/" >深浅拷贝</a>
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/回流和重绘/" >重绘和回流</a>
         </li>
     
     
@@ -1612,12 +1600,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/cookie与WebStorage/" >cookie与WebStorage</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2018/03/21/清除浮动/" >清除浮动</a>
         </li>
     
     
@@ -1647,12 +1635,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/CodeIgniter-Rest-Server/" >CodeIgniter Rest Server 学习笔记</a>
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2018/02/08/FetchAPI/" >Fetch API学习笔记</a>
         </li>
     
     
@@ -1677,12 +1665,12 @@ meta标签中name属性语法格式是：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/keep-alive/" >vue2.0中keep-alive实践</a>
+            <span class="archive-post-date">01/19</span><a class="archive-post-title" href= "/2018/01/19/SVG/" >SVG学习笔记</a>
         </li>
     
     
@@ -1709,37 +1697,37 @@ meta标签中name属性语法格式是：
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
-    
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
         <span class="sidebar-tag-name" data-tags="CodeIgniter"><span class="iconfont-archer">&#xe606;</span>CodeIgniter</span>
     
         <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
     
+        <span class="sidebar-tag-name" data-tags="JavaScript ajax"><span class="iconfont-archer">&#xe606;</span>JavaScript ajax</span>
+    
         <span class="sidebar-tag-name" data-tags="DNS"><span class="iconfont-archer">&#xe606;</span>DNS</span>
-    
-        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
-    
-        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
         <span class="sidebar-tag-name" data-tags="NodeJS"><span class="iconfont-archer">&#xe606;</span>NodeJS</span>
     
-        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
-    
         <span class="sidebar-tag-name" data-tags="MongoDB"><span class="iconfont-archer">&#xe606;</span>MongoDB</span>
     
-        <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
+        <span class="sidebar-tag-name" data-tags="ESLint"><span class="iconfont-archer">&#xe606;</span>ESLint</span>
     
         <span class="sidebar-tag-name" data-tags="SVG"><span class="iconfont-archer">&#xe606;</span>SVG</span>
+    
+        <span class="sidebar-tag-name" data-tags="express"><span class="iconfont-archer">&#xe606;</span>express</span>
+    
+        <span class="sidebar-tag-name" data-tags="RESTful"><span class="iconfont-archer">&#xe606;</span>RESTful</span>
     
         <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
     
         <span class="sidebar-tag-name" data-tags="Flex"><span class="iconfont-archer">&#xe606;</span>Flex</span>
     
-        <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
-    
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="ES6"><span class="iconfont-archer">&#xe606;</span>ES6</span>
+    
+        <span class="sidebar-tag-name" data-tags="Vue"><span class="iconfont-archer">&#xe606;</span>Vue</span>
     
         <span class="sidebar-tag-name" data-tags="HTML"><span class="iconfont-archer">&#xe606;</span>HTML</span>
     
